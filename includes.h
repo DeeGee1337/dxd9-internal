@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Windows.h>
+#include <iostream>
 
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -12,3 +13,4 @@
 #include "hook.h"
 #include "drawing.h"
 #include "hack.h"
+#include "offsets.h"

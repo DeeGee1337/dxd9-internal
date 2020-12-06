@@ -53,6 +53,7 @@ void draw_esp_box_2d(Vec2 top, Vec2 bot, int thickness, D3DCOLOR color)
 	draw_line(tr, br, thickness, color);
 }
 
+
 //void draw_esp_cornerbox_2d(Vec2 top, Vec2 bot, int thickness, D3DCOLOR inlinecolor, D3DCOLOR OutLine)
 //{
 //	int H = ABS(top.y - bot.y);
