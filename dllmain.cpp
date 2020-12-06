@@ -1,11 +1,20 @@
 #include "includes.h"
 
+// settings
+bool static_crosshair = false;
+bool recoil_crosshair = true;
+bool snapline_esp = true;
+bool box_esp_2d = true;
+
 // data
 void* d3d9Device[119];
 BYTE EndSceneBytes[7]{ 0 };
 tEndScene oEndScene = nullptr;
 extern LPDIRECT3DDEVICE9 pDevice = nullptr;
 Hack* hack;
+
+int CenterX = GetSystemMetrics(0) / 2 - 1; // gets screen X resolution then cutting it in half to ##### the center.
+int CenterY = GetSystemMetrics(1) / 2 - 1; // gets screen Y resolution then cutting it in half to ##### the center.
 
 // hook function
 void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
@@ -25,14 +34,46 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 		else
 			color = D3DCOLOR_ARGB(255, 255, 0, 0);
 
-		Vec2 entPos2D;
-		// snapline
-		if (hack->WorldToScreen(curEnt->vecOrigin, entPos2D))
-			DrawLine(entPos2D.x, entPos2D.y, windowWidth / 2, windowHeight, 2, color);
+		Vec3 entHead3D = hack->GetBonePos(curEnt, 8); // head
+		entHead3D.z = entHead3D.z + 8;
+		Vec2 entPos2D, entHead2D;
+
+		if (snapline_esp)
+		{
+			if (hack->WorldToScreen(curEnt->vecOrigin, entPos2D))
+				draw_line(entPos2D.x, entPos2D.y, windowWidth / 2, windowHeight, 2, color);
+		}
+		if (box_esp_2d)
+		{
+			if (hack->WorldToScreen(entHead3D, entHead2D))
+				draw_esp_box_2d(entPos2D, entHead2D, 1, color);
+		}
+
 	}
 
 	// crosshair
-	DrawFilledRect(windowWidth / 2 - 2, windowHeight / 2 - 2, 4, 4, D3DCOLOR_ARGB(255, 255, 255, 255));
+
+	//static crosshair
+	if (static_crosshair)
+	{
+		draw_crosshair(windowWidth / 2, windowHeight / 2, 15, 1, D3DCOLOR_ARGB(255, 204, 0, 0)); // diagonal line
+		draw_crosshair((windowWidth / 2) - 15, windowHeight / 2, 15, 1, D3DCOLOR_ARGB(255, 204, 0, 0)); // diagonal line
+		draw_crosshair(windowWidth / 2, windowHeight / 2, 1, 15, D3DCOLOR_ARGB(255, 204, 0, 0)); // vertical line
+		draw_crosshair(windowWidth / 2, (windowHeight / 2) - 15, 1, 15, D3DCOLOR_ARGB(255, 204, 0, 0)); // vertical line
+	}
+	//recoil crosshair
+	if (recoil_crosshair)
+	{
+		Vec2 l, r, t, b;
+		l = r = t = b = hack->crosshair2D;
+		l.x = l.x - hack->crosshairSize;
+		r.x = r.x + hack->crosshairSize;
+		t.y = t.y - hack->crosshairSize;
+		b.y = b.y + hack->crosshairSize;
+
+		draw_line(l, r, 2, D3DCOLOR_ARGB(255, 255, 255, 255));
+		draw_line(t, b, 2, D3DCOLOR_ARGB(255, 255, 255, 255));
+	}
 
 	// call og function
 	oEndScene(pDevice);
@@ -53,6 +94,15 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	// hack loop
 	while (!GetAsyncKeyState(VK_END)) {
 		hack->Update();
+
+		// crosshairrecoil
+		Vec3 pAng = hack->localEnt->aimPunchAngle;
+		hack->crosshair2D.x = windowWidth / 2 - (windowWidth / 90 * pAng.y);
+		hack->crosshair2D.y = windowHeight / 2 + (windowHeight / 90 * pAng.x);
+
+		//vischeck raytrace
+		//SOONTM
+
 	}
 
 	// unhook

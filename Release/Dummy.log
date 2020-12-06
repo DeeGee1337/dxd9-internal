@@ -1,18 +1,24 @@
-﻿  dllmain.cpp
-C:\Users\Anon\Downloads\d3d9 esp1z1 esp video 2 -snaplines\d3d9 esp1z1 esp video 2 - snaplines\Dummy\dllmain.cpp(34,33): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Downloads\d3d9 esp1z1 esp video 2 -snaplines\d3d9 esp1z1 esp video 2 - snaplines\Dummy\dllmain.cpp(34,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (Dummy.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  dllmain.cpp
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(44,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(44,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   drawing.cpp
-C:\Users\Anon\Downloads\d3d9 esp1z1 esp video 2 -snaplines\d3d9 esp1z1 esp video 2 - snaplines\Dummy\drawing.cpp(14,28): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\Users\Anon\Downloads\d3d9 esp1z1 esp video 2 -snaplines\d3d9 esp1z1 esp video 2 - snaplines\Dummy\drawing.cpp(14,24): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\Users\Anon\Downloads\d3d9 esp1z1 esp video 2 -snaplines\d3d9 esp1z1 esp video 2 - snaplines\Dummy\drawing.cpp(15,28): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\Users\Anon\Downloads\d3d9 esp1z1 esp video 2 -snaplines\d3d9 esp1z1 esp video 2 - snaplines\Dummy\drawing.cpp(15,24): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\Users\Anon\Downloads\d3d9 esp1z1 esp video 2 -snaplines\d3d9 esp1z1 esp video 2 - snaplines\Dummy\drawing.cpp(16,18): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(18,28): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(18,24): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(19,28): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(19,24): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(20,24): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(26,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(26,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(26,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(26,15): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\drawing.cpp(37,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   dx.cpp
   hack.cpp
   hook.cpp
   Generating code
-  0 of 20 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  2 of 25 functions ( 8.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Dummy.vcxproj -> C:\Users\Anon\Downloads\d3d9 esp1z1 esp video 2 -snaplines\d3d9 esp1z1 esp video 2 - snaplines\Dummy\Release\Dummy.dll
+  Dummy.vcxproj -> C:\Users\Anon\Documents\GitHub\dxd9 internal\Release\dxd9 internal.dll
