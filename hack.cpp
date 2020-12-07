@@ -54,3 +54,52 @@ Vec3 Hack::GetBonePos(Ent* ent, int bone)
 
 	return bonePos;
 }
+
+//bool Hack::IsValidTarget(Ent* localPlayer, Ent* ent)
+//{
+//	if (ent && ent->iTeamNum != localPlayer->iTeamNum && ent->clientId != localPlayer->clientId && ent->m_lifeState == 0)
+//	{
+//		return true;
+//	}
+//	else return false;
+//}
+//
+//Vec3 Hack::CalcAngle(Vec3 src, Vec3 dst)
+//{
+//	Vec3 angles;
+//
+//	Vec3 delta = src - dst;
+//	float hyp = src.Distance(dst);
+//	angles.x = -asin(delta.z / hyp) * 180.0f / pi;
+//	angles.y = atan2(delta.y, delta.x) * 180.0f / pi;
+//	angles.z = 0.0f;
+//
+//	if (delta.x >= 0.0f)
+//		angles.y += 180.0f;
+//
+//	return angles;
+//}
+//
+//Ent* Hack::GetBestTarget(Ent* localPlayer, Vec3* viewAngles, EntList* entList)
+//{
+//	float oldDistance = FLT_MAX;
+//	float newDistance = 0;
+//	Ent* target = nullptr;
+//
+//	for (auto curr : entList->ents)
+//	{
+//		if (IsValidTarget(localPlayer, curr.ent))
+//		{
+//			Vec3 eyepos = localPlayer->m_vecOrigin + localPlayer->m_vecViewOffset;
+//			Vec3 angleTo = CalcAngle(eyepos, curr.ent->m_vecOrigin);
+//			newDistance = viewAngles->Distance(angleTo);
+//
+//			if (newDistance < oldDistance)
+//			{
+//				oldDistance = newDistance;
+//				target = curr.ent;
+//			}
+//		}
+//	}
+//	return target;
+//}

@@ -1,14 +1,14 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (Dummy.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   dllmain.cpp
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(49,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(49,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(59,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(60,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(66,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(67,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(50,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(50,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(60,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(61,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(67,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(68,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Generating code
-  1 of 29 functions ( 3.4%) were compiled, the rest were copied from previous compilation.
+  2 of 42 functions ( 4.8%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Dummy.vcxproj -> C:\Users\Anon\Documents\GitHub\dxd9 internal\Release\dxd9 internal.dll

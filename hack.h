@@ -9,6 +9,8 @@
 
 #define ABS(x) ((x < 0) ? (-x) : (x))
 
+const float pi = 3.14159265358979323846f;
+
 struct Vec2 
 {
 	float x, y;
@@ -30,6 +32,20 @@ struct Vec3
 	{
 		return { x * d, y * d, z * d };
 	}
+
+	//Vec3() {};
+	//Vec3(const float x, const float y, const float z) : x(x), y(y), z(z) {}
+	//Vec3 operator + (const Vec3& rhs) const { return Vec3(x + rhs.x, y + rhs.y, z + rhs.z); }
+	//Vec3 operator - (const Vec3& rhs) const { return Vec3(x - rhs.x, y - rhs.y, z - rhs.z); }
+	//Vec3 operator * (const float& rhs) const { return Vec3(x * rhs, y * rhs, z * rhs); }
+	//Vec3 operator / (const float& rhs) const { return Vec3(x / rhs, y / rhs, z / rhs); }
+	//Vec3& operator += (const Vec3& rhs) { return *this = *this + rhs; }
+	//Vec3& operator -= (const Vec3& rhs) { return *this = *this - rhs; }
+	//Vec3& operator *= (const float& rhs) { return *this = *this * rhs; }
+	//Vec3& operator /= (const float& rhs) { return *this = *this / rhs; }
+	//float Length() const { return sqrtf(x * x + y * y + z * z); }
+	//Vec3 Normalize() const { return *this * (1 / Length()); }
+	//float Distance(const Vec3& rhs) const { return (*this - rhs).Length(); }
 
 	void Normalize() 
 	{
@@ -62,14 +78,16 @@ public:
 		DEFINE_MEMBER_N(int, ArmorValue, offsets::m_ArmorValue); // offset
 		// aimPunchAngle
 		DEFINE_MEMBER_N(Vec3, aimPunchAngle, offsets::m_aimPunchAngle); // offset
+		// clientID
+		DEFINE_MEMBER_N(int, clientId, 0x64);
 
-		////vischeck maybe soon TM
-		////origin
-		//DEFINE_MEMBER_N(Vec3, origin, 0x138); // offset
-		////clientId
-		//DEFINE_MEMBER_N(int, clientId, 0x64); // offset
-		////m_vecViewOffset
-		//DEFINE_MEMBER_N(Vec3, m_vecViewOffset, 0x108); // offset
+		//// m_vecOrigin -y ist dopplt
+		//DEFINE_MEMBER_N(Vec3, m_vecOrigin, offsets::m_vecOrigin);
+
+		//// m_vecViewOffset
+		//DEFINE_MEMBER_N(Vec3, m_vecViewOffset, offsets::m_vecViewOffset);
+		//// m_lifeState
+		//DEFINE_MEMBER_N(char, m_lifeState, offsets::m_lifeState);
 	};
 };
 
@@ -86,14 +104,17 @@ public:
 
 class Hack {
 public:
-	uintptr_t dwEntityList = 0x4D9EA34; // offset
-	uintptr_t dwViewMatrix = 0x4D90334; // offset
+	uintptr_t dwEntityList = offsets::dwEntityList;
+	uintptr_t dwViewMatrix = offsets::dwViewMatrix;
 
 	uintptr_t engine;
 	uintptr_t client;
 	Ent* localEnt;
 	EntList* entList;
 	float viewMatrix[16];
+
+	//aimbot
+	Ent* target;
 
 	ID3DXLine* LineL;
 
@@ -105,4 +126,9 @@ public:
 	bool CheckValidEnt(Ent* ent);
 	bool WorldToScreen(Vec3 pos, Vec2& screen);
 	Vec3 GetBonePos(Ent* ent, int bone);
+
+	////aimbot
+	//bool IsValidTarget(Ent* localPlayer, Ent* ent);
+	//Ent* GetBestTarget(Ent* localPlayer, Vec3* viewAngles, EntList* entList);
+	//Vec3 CalcAngle(Vec3 src, Vec3 dst);
 };

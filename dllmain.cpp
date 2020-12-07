@@ -10,6 +10,7 @@ bool glow = true;
 bool rcs = true;
 bool triggerbot = true;
 bool bunnyhop = true;
+bool aimbot = true;
 
 // data
 void* d3d9Device[119];
@@ -219,6 +220,26 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 				}
 			}
 		}
+
+		//if (aimbot)
+		//{
+		//	while (GetAsyncKeyState(VK_SPACE))
+		//	{
+		//		Ent* localPlayer = *(Ent**)(hack->client + offsets::dwLocalPlayer);
+		//		uintptr_t playerStatePtr = hack->engine + offsets::dwClientState;
+		//		Vec3* viewAngles = (Vec3*)(*(uintptr_t*)(playerStatePtr)+offsets::dwClientState_ViewAngles);
+		//		EntList* entList = (EntList*)(hack->client + offsets::dwEntityList);
+
+		//		Ent* target = hack->GetBestTarget(localPlayer, viewAngles, entList);
+
+		//		if (target)
+		//		{
+		//			Vec3 body = target->m_vecOrigin;
+		//			body.z -= 10;
+		//			*viewAngles = hack->CalcAngle(localPlayer->m_vecOrigin, body);
+		//		}
+		//	}
+		//}
 	}
 
 	// unhook
