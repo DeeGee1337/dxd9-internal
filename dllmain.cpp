@@ -1,5 +1,8 @@
 #include "includes.h"
 
+#include "csgoVector.h"
+#include "csgotrace.h"
+
 // settings
 bool static_crosshair = false;
 bool recoil_crosshair = true;
@@ -18,6 +21,10 @@ BYTE EndSceneBytes[7]{ 0 };
 tEndScene oEndScene = nullptr;
 extern LPDIRECT3DDEVICE9 pDevice = nullptr;
 Hack* hack;
+
+//trace data
+tTraceRay TraceRay;
+tCreateInterface CreateInterface;
 
 int CenterX = GetSystemMetrics(0) / 2 - 1; // gets screen X resolution then cutting it in half to ##### the center.
 int CenterY = GetSystemMetrics(1) / 2 - 1; // gets screen Y resolution then cutting it in half to ##### the center.
@@ -123,6 +130,10 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	hack = new Hack();
 	hack->Init();
 
+	////tracedata
+	//CreateInterface = (tCreateInterface)GetProcAddress((HMODULE)hack->engine, "CreateInterface");
+	//IEngineTrace* EngineTrace = (IEngineTrace*)GetInterface(CreateInterface, "EngineTraceClient004");
+
 	//---DATA---
 	//rcs v2.0 data
 	Vec3 oPunch = { 0,0,0 };
@@ -138,11 +149,41 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	while (!GetAsyncKeyState(VK_END)) 
 	{
 		hack->Update();
-
+		
 		// crosshairrecoil
 		Vec3 pAng = hack->localEnt->aimPunchAngle;
 		hack->crosshair2D.x = windowWidth / 2 - (windowWidth / 90 * pAng.y);
 		hack->crosshair2D.y = windowHeight / 2 + (windowHeight / 90 * pAng.x);
+
+		////trace
+		//Ent* pLocal = *(Ent**)(hack->client + offsets::dwLocalPlayer);
+
+		//if (GetAsyncKeyState(VK_SPACE) & 1)
+		//{
+		//	EntList* entList = (EntList*)(hack->client + offsets::dwEntityList);
+		//	for (auto currEnt : entList->ents)
+		//	{
+		//		if (currEnt.ent && currEnt.ent->clientId != pLocal->clientId)
+		//		{
+		//			vec3 eyepos = pLocal->m_vecOrigin + pLocal->m_vecViewOffset;
+		//			vec3 targeteyepos = currEnt.ent->m_vecOrigin + currEnt.ent->m_vecViewOffset;
+
+		//			CGameTrace trace;
+		//			Ray_t ray;
+		//			CTraceFilter tracefilter;
+		//			tracefilter.pSkip = (void*)pLocal;
+
+		//			ray.Init(eyepos, targeteyepos);
+
+		//			EngineTrace->TraceRay(ray, MASK_SHOT | CONTENTS_GRATE, &tracefilter, &trace);
+
+		//			if (currEnt.ent == trace.hit_entity)
+		//			{
+		//				draw_fill_rect(200, 200, 30, 30, D3DCOLOR_ARGB(255, 255, 255, 255));
+		//			}
+		//		}
+		//	}
+		//}
 
 		if (glow)
 		{

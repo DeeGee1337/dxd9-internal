@@ -138,6 +138,8 @@
     <ClCompile Include="hook.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="csgotrace.h" />
+    <ClInclude Include="csgoVector.h" />
     <ClInclude Include="drawing.h" />
     <ClInclude Include="dx.h" />
     <ClInclude Include="hack.h" />

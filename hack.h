@@ -1,6 +1,7 @@
 #pragma once
 
 #include "offsets.h"
+#include "csgoVector.h"
 
 #define STR_MERGE_IMPL(a, b) a##b
 #define STR_MERGE(a, b) STR_MERGE_IMPL(a, b)
@@ -82,10 +83,10 @@ public:
 		DEFINE_MEMBER_N(int, clientId, 0x64);
 
 		//// m_vecOrigin -y ist dopplt
-		//DEFINE_MEMBER_N(Vec3, m_vecOrigin, offsets::m_vecOrigin);
+		DEFINE_MEMBER_N(vec3, m_vecOrigin, offsets::m_vecOrigin);
 
 		//// m_vecViewOffset
-		//DEFINE_MEMBER_N(Vec3, m_vecViewOffset, offsets::m_vecViewOffset);
+		DEFINE_MEMBER_N(vec3, m_vecViewOffset, offsets::m_vecViewOffset);
 		//// m_lifeState
 		//DEFINE_MEMBER_N(char, m_lifeState, offsets::m_lifeState);
 	};
@@ -132,3 +133,44 @@ public:
 	//Ent* GetBestTarget(Ent* localPlayer, Vec3* viewAngles, EntList* entList);
 	//Vec3 CalcAngle(Vec3 src, Vec3 dst);
 };
+
+//// Raytrace
+//// https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/gametrace.h#L30
+//// https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/public/cmodel.h#L61
+//// https://github.com/ValveSoftware/source-sdk-2013/blob/master/sp/src/public/bspflags.h
+//// https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/public/engine/IEngineTrace.h#L54
+//
+//class IClientEntityList
+//{
+//public:
+//	// Get IClientNetworkable interface for specified entity
+//	virtual void* GetClientNetworkable(int entnum) = 0;
+//	virtual void* GetClientNetworkableFromHandle(int hEnt) = 0;
+//	virtual void* GetClientUnknownFromHandle(int hEnt) = 0;
+//
+//	// NOTE: This function is only a convenience wrapper.
+//	// It returns GetClientNetworkable( entnum )->GetIClientEntity().
+//	virtual void* GetClientEntity(int entnum) = 0;
+//	virtual void* GetClientEntityFromHandle(int hEnt) = 0;
+//
+//	// Returns number of entities currently in use
+//	virtual int					NumberOfEntities(bool bIncludeNonNetworkable) = 0;
+//
+//	// Returns highest index actually used
+//	virtual int					GetHighestEntityIndex(void) = 0;
+//
+//	// Sizes entity list to specified size
+//	virtual void				SetMaxEntities(int maxents) = 0;
+//	virtual int					GetMaxEntities() = 0;
+//};
+//
+
+//void* GetInterface(const char* dllname, const char* interfacename)
+//{
+//	tCreateInterface CreateInterface = (tCreateInterface)GetProcAddress(GetModuleHandle(dllname), "CreateInterface");
+//
+//	int returnCode = 0;
+//	void* interface2 = CreateInterface(interfacename, &returnCode);
+//
+//	return interface2;
+//}
