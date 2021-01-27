@@ -13,7 +13,7 @@ bool glow = true;
 bool rcs = true;
 bool triggerbot = true;
 bool bunnyhop = true;
-bool aimbot = true;
+bool aimbot = false;
 
 // data
 void* d3d9Device[119];
@@ -29,13 +29,53 @@ tCreateInterface CreateInterface;
 int CenterX = GetSystemMetrics(0) / 2 - 1; // gets screen X resolution then cutting it in half to ##### the center.
 int CenterY = GetSystemMetrics(1) / 2 - 1; // gets screen Y resolution then cutting it in half to ##### the center.
 
+Player* GetClosestEnemy()
+{
+	LocalPlayer* localPlayer = LocalPlayer::Get();
+
+	float closestDitance = 1000000;
+	int closesDistanceIndex = -1;
+
+	for (int i = 1; i < *Player::GetMaxPlayer(); i++)
+	{
+		Player* currentPlayer = Player::GetPlayer(i);
+
+		if (!currentPlayer || !(*(uint32_t*)currentPlayer) || (uint32_t)currentPlayer == (uint32_t)localPlayer)
+		{
+			continue;
+		}
+
+		if (*currentPlayer->GetTeam() == *localPlayer->GetTeam())
+		{
+			continue;
+		}
+
+		if (*currentPlayer->GetHealth() < 1 || *localPlayer->GetHealth() < 1)
+		{
+			continue;
+		}
+
+		float currentDistance = localPlayer->GetDistance(currentPlayer->GetOrigin());
+		if (currentDistance < closestDitance)
+		{
+			closestDitance = currentDistance;
+			closesDistanceIndex = i;
+		}
+	}
+
+	if (closesDistanceIndex == -1)
+	{
+		return NULL;
+	}
+	return Player::GetPlayer(closesDistanceIndex);
+}
+
 // hook function
 void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 	if (!pDevice)
 		pDevice = o_pDevice;
 
 	// drawing stuff
-
 	for (int i = 1; i < 32; i++) {
 		Ent* curEnt = hack->entList->ents[i].ent;
 		if (!hack->CheckValidEnt(curEnt))
@@ -54,7 +94,7 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 		if (snapline_esp)
 		{
 			if (hack->WorldToScreen(curEnt->vecOrigin, entPos2D))
-				draw_line(entPos2D.x, entPos2D.y, windowWidth / 2, windowHeight, 2, color);
+				draw_line(entPos2D.x, entPos2D.y, windowWidth / 2, windowHeight, 2, D3DCOLOR_ARGB(0, 255, 0, 0));
 		}
 		if (box_esp_2d)
 		{
@@ -148,6 +188,30 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	// hack loop
 	while (!GetAsyncKeyState(VK_END)) 
 	{
+		if (GetAsyncKeyState(VK_F1) & 1)
+			aimbot = !aimbot;
+
+		if (GetAsyncKeyState(VK_F2) & 1)
+			rcs = !rcs;
+
+		if (GetAsyncKeyState(VK_F3) & 1)
+			triggerbot = !triggerbot;
+
+		if (GetAsyncKeyState(VK_F4) & 1)
+			box_esp_2d = !box_esp_2d;
+
+		if (GetAsyncKeyState(VK_F5) & 1)
+			snapline_esp = !snapline_esp;
+
+		if (GetAsyncKeyState(VK_F6) & 1)
+			glow = !glow;
+
+		if (GetAsyncKeyState(VK_F7) & 1)
+			bunnyhop = !bunnyhop;
+
+		if (GetAsyncKeyState(VK_F8) & 1)
+			recoil_crosshair = !recoil_crosshair;
+
 		hack->Update();
 		
 		// crosshairrecoil
@@ -262,25 +326,37 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 			}
 		}
 
-		//if (aimbot)
-		//{
-		//	while (GetAsyncKeyState(VK_SPACE))
-		//	{
-		//		Ent* localPlayer = *(Ent**)(hack->client + offsets::dwLocalPlayer);
-		//		uintptr_t playerStatePtr = hack->engine + offsets::dwClientState;
-		//		Vec3* viewAngles = (Vec3*)(*(uintptr_t*)(playerStatePtr)+offsets::dwClientState_ViewAngles);
-		//		EntList* entList = (EntList*)(hack->client + offsets::dwEntityList);
+		if (bunnyhop)
+		{
+			if (localEntPtr)
+			{
+				uintptr_t localEnt = *localEntPtr;
+				int localTeam = *(int*)(localEnt + offsets::m_iTeamNum);
 
-		//		Ent* target = hack->GetBestTarget(localPlayer, viewAngles, entList);
+				BYTE flag = *(BYTE*)(localEnt + offsets::m_fFlags);
 
-		//		if (target)
-		//		{
-		//			Vec3 body = target->m_vecOrigin;
-		//			body.z -= 10;
-		//			*viewAngles = hack->CalcAngle(localPlayer->m_vecOrigin, body);
-		//		}
-		//	}
-		//}
+				if (GetAsyncKeyState(VK_SPACE) && (flag & (1 << 0)))
+				{
+					*(DWORD*)(hack->client + offsets::dwForceJump) = 6;
+				}
+			}
+		}
+
+		if (aimbot)
+		{
+			if (localEntPtr)
+			{
+				if (GetAsyncKeyState(VK_LBUTTON))
+				{
+					Player* closestEnemy = GetClosestEnemy();
+
+					if (closestEnemy)
+					{
+						LocalPlayer::Get()->AimAt(closestEnemy->GetBonePos(8));
+					}
+				}
+			}
+		}
 	}
 
 	// unhook

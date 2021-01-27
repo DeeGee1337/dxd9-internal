@@ -134,6 +134,7 @@ public:
 	//Vec3 CalcAngle(Vec3 src, Vec3 dst);
 };
 
+
 //// Raytrace
 //// https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/gametrace.h#L30
 //// https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/public/cmodel.h#L61

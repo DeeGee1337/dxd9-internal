@@ -136,6 +136,8 @@
     <ClCompile Include="dx.cpp" />
     <ClCompile Include="hack.cpp" />
     <ClCompile Include="hook.cpp" />
+    <ClCompile Include="localplayer.cpp" />
+    <ClCompile Include="player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="csgotrace.h" />
@@ -145,7 +147,9 @@
     <ClInclude Include="hack.h" />
     <ClInclude Include="hook.h" />
     <ClInclude Include="includes.h" />
+    <ClInclude Include="localplayer.h" />
     <ClInclude Include="offsets.h" />
+    <ClInclude Include="player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
