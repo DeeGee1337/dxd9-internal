@@ -1,7 +1,5 @@
 #include "includes.h"
 
-// hooking functions by rake and solair
-
 // patch bytes function
 void Patch(BYTE* dst, BYTE* src, unsigned int size) {
 	DWORD oProc;
