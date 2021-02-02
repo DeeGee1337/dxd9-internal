@@ -284,19 +284,28 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 
 				for (int i = 1; i < 32; i++) 
 				{
+					Ent* curEnt = hack->entList->ents[i].ent;
+					if (!hack->CheckValidEnt(curEnt))
+						continue;
+
 					uintptr_t* entityPtr = (uintptr_t*)(hack->client + offsets::dwEntityList + i * 0x10);
 					uintptr_t entity = *entityPtr;
 
 					if (entity) 
 					{
 						int entityTeam = *(int*)(entity + offsets::m_iTeamNum);
+
 						// if in diffrent team
 						if (playerTeam != entityTeam) 
 						{
+							int G = curEnt->iHealth / 100.f * 255.f;
+							int R = 255.f - G;
+
 							int entityGlowIdx = *(int*)(entity + offsets::m_iGlowIndex);
-							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x8) = 1.f;
-							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x10) = 1.f;
-							*(int*)(glowManager + entityGlowIdx * 0x38 + 0x24) = 1;
+							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x4) = R; //red
+							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x8) = G; //green
+							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x10) = 1.f; //alpha
+							*(int*)(glowManager + entityGlowIdx * 0x38 + 0x24) = 1; //enable
 						}
 					}
 				}
