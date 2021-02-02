@@ -8,6 +8,7 @@ bool static_crosshair = false;
 bool recoil_crosshair = true;
 bool snapline_esp = true;
 bool box_esp_2d = true;
+bool textesp = true;
 bool healtharmorbar = true;
 bool glow = true;
 bool rcs = true;
@@ -76,6 +77,10 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 		pDevice = o_pDevice;
 
 	// drawing stuff
+
+	//Watermark
+	draw_text("-- DeeGee Negerhook --", windowWidth / 2, windowHeight - 20, D3DCOLOR_ARGB(255, 255, 255, 255));
+
 	for (int i = 1; i < 32; i++) {
 		Ent* curEnt = hack->entList->ents[i].ent;
 		if (!hack->CheckValidEnt(curEnt))
@@ -90,15 +95,18 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 		Vec3 entHead3D = hack->GetBonePos(curEnt, 8); // head
 		entHead3D.z = entHead3D.z + 8;
 		Vec2 entPos2D, entHead2D;
+		//test
+		Vec3 entTEST3D = hack->GetBonePos(curEnt, 1);
 
 		if (snapline_esp)
 		{
 			if (hack->WorldToScreen(curEnt->vecOrigin, entPos2D))
 				draw_line(entPos2D.x, entPos2D.y, windowWidth / 2, windowHeight, 2, D3DCOLOR_ARGB(0, 255, 0, 0));
 		}
+		
 		if (box_esp_2d)
 		{
-			if (hack->WorldToScreen(entHead3D, entHead2D))
+			if (hack->WorldToScreen(entHead3D, entHead2D) && hack->WorldToScreen(entTEST3D, entPos2D))
 			{
 				draw_esp_box_2d(entPos2D, entHead2D, 1, color);
 
@@ -114,11 +122,11 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 					int healthHeight = height * healthPct;
 					int armorHeight = height * armorPct;
 
-					int offset = 2; // thickness
+					int offset = 3; // thickness
 
 					botHealth.y = botArmor.y = entPos2D.y;
 					botHealth.x = entPos2D.x - (height / 4) - offset;
-					botArmor.x = entPos2D.x + (height / 4) - offset; 
+					botArmor.x = entPos2D.x + (height / 4) + offset; 
 					topHealth.y = entHead2D.y + height - healthHeight;
 					topArmor.y = entHead2D.y + height - armorHeight;
 					topHealth.x = entPos2D.x - (height / 4) - offset - (dX * healthPct);
@@ -126,6 +134,23 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 					draw_line(botHealth, topHealth, offset, D3DCOLOR_ARGB(255, 0, 255, 0));
 					draw_line(botArmor, topArmor, offset, D3DCOLOR_ARGB(255, 0, 255, 255));
+				}
+
+				if (textesp)
+				{
+					std::stringstream s1, s2;
+					s1 << curEnt->iHealth;
+					s2 << curEnt->ArmorValue;
+					std::string t1 = "Health: " + s1.str();
+					std::string t2 = "Armor: " + s2.str();
+					char* healthMsg = (char*)t1.c_str();
+					char* armorMsg = (char*)t2.c_str();
+
+					draw_text(healthMsg, entPos2D.x, entPos2D.y, D3DCOLOR_ARGB(255, 255, 255, 255));
+					draw_text(armorMsg, entPos2D.x, entPos2D.y + 12, D3DCOLOR_ARGB(255, 255, 255, 255));
+
+					if (!curEnt->bHasHelmet)
+						draw_text("No Helmet", entPos2D.x, entPos2D.y + 24, D3DCOLOR_ARGB(255, 255, 255, 255));
 				}
 			}
 		}

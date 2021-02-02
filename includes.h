@@ -5,6 +5,8 @@
 #include <cstdint>
 #include <math.h>
 #include <chrono>
+#include <string.h>
+#include <sstream>
 
 #include <d3d9.h>
 #include <d3dx9.h>

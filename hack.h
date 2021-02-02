@@ -89,6 +89,8 @@ public:
 		DEFINE_MEMBER_N(vec3, m_vecViewOffset, offsets::m_vecViewOffset);
 		//// m_lifeState
 		//DEFINE_MEMBER_N(char, m_lifeState, offsets::m_lifeState);
+
+		DEFINE_MEMBER_N(bool, bHasHelmet, 0x1839);
 	};
 };
 
@@ -118,6 +120,7 @@ public:
 	Ent* target;
 
 	ID3DXLine* LineL;
+	ID3DXFont* FontF;
 
 	Vec2 crosshair2D;
 	int crosshairSize = 4;

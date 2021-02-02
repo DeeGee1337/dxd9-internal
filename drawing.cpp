@@ -53,35 +53,47 @@ void draw_esp_box_2d(Vec2 top, Vec2 bot, int thickness, D3DCOLOR color)
 	draw_line(tr, br, thickness, color);
 }
 
+void draw_esp_cornerbox_2d(Vec2 top, Vec2 bot, int thickness, D3DCOLOR inlinecolor, D3DCOLOR OutLine)
+{
+	int H = ABS(top.y - bot.y);
+	int W = ABS(top.x - top.x);
+	int X = top.x - H / 4;
+	int Y = top.y;
 
-//void draw_esp_cornerbox_2d(Vec2 top, Vec2 bot, int thickness, D3DCOLOR inlinecolor, D3DCOLOR OutLine)
-//{
-//	int H = ABS(top.y - bot.y);
-//	int W = ABS(top.x - top.x);
-//	int X = top.x - H / 4;
-//	int Y = top.y;
-//
-//	float lineW = (100 / 5); // hardcoded
-//	float lineH = (100 / 6); // hardcoded
-//	float lineT = 1;
-//
-//	//outline;
-//	draw_line(X - lineT, Y - lineT, X + lineW, Y - lineT, thickness, OutLine); //top left
-//	draw_line(X - lineT, Y - lineT, X - lineT, Y + lineH, thickness, OutLine);
-//	draw_line(X - lineT, Y + H - lineH, X - lineT, Y + H + lineT, thickness, OutLine); //bot left
-//	draw_line(X - lineT, Y + H + lineT, X + lineW, Y + H + lineT, thickness, OutLine);
-//	draw_line(X + W - lineW, Y - lineT, X + W + lineT, Y - lineT, thickness, OutLine); // top right
-//	draw_line(X + W + lineT, Y - lineT, X + W + lineT, Y + lineH, thickness, OutLine);
-//	draw_line(X + W + lineT, Y + H - lineH, X + W + lineT, Y + H + lineT, thickness, OutLine); // bot right
-//	draw_line(X + W - lineW, Y + H + lineT, X + W + lineT, Y + H + lineT, thickness, OutLine);
-//
-//	//inline
-//	draw_line(X, Y, X, Y + lineH, thickness, inlinecolor);//top left
-//	draw_line(X, Y, X + lineW, Y, thickness, inlinecolor);
-//	draw_line(X + W - lineW, Y, X + W, Y, thickness, inlinecolor); //top right
-//	draw_line(X + W, Y, X + W, Y + lineH, thickness, inlinecolor);
-//	draw_line(X, Y + H - lineH, X, Y + H, thickness, inlinecolor); //bot left
-//	draw_line(X, Y + H, X + lineW, Y + H, thickness, inlinecolor);
-//	draw_line(X + W - lineW, Y + H, X + W, Y + H, thickness, inlinecolor);//bot right
-//	draw_line(X + W, Y + H - lineH, X + W, Y + H, thickness, inlinecolor);
-//}
+	float lineW = (100 / 5); // hardcoded
+	float lineH = (100 / 6); // hardcoded
+	float lineT = 1;
+
+	//outline;
+	draw_line(X - lineT, Y - lineT, X + lineW, Y - lineT, thickness, OutLine); //top left
+	draw_line(X - lineT, Y - lineT, X - lineT, Y + lineH, thickness, OutLine);
+	draw_line(X - lineT, Y + H - lineH, X - lineT, Y + H + lineT, thickness, OutLine); //bot left
+	draw_line(X - lineT, Y + H + lineT, X + lineW, Y + H + lineT, thickness, OutLine);
+	draw_line(X + W - lineW, Y - lineT, X + W + lineT, Y - lineT, thickness, OutLine); // top right
+	draw_line(X + W + lineT, Y - lineT, X + W + lineT, Y + lineH, thickness, OutLine);
+	draw_line(X + W + lineT, Y + H - lineH, X + W + lineT, Y + H + lineT, thickness, OutLine); // bot right
+	draw_line(X + W - lineW, Y + H + lineT, X + W + lineT, Y + H + lineT, thickness, OutLine);
+
+	//inline
+	draw_line(X, Y, X, Y + lineH, thickness, inlinecolor);//top left
+	draw_line(X, Y, X + lineW, Y, thickness, inlinecolor);
+	draw_line(X + W - lineW, Y, X + W, Y, thickness, inlinecolor); //top right
+	draw_line(X + W, Y, X + W, Y + lineH, thickness, inlinecolor);
+	draw_line(X, Y + H - lineH, X, Y + H, thickness, inlinecolor); //bot left
+	draw_line(X, Y + H, X + lineW, Y + H, thickness, inlinecolor);
+	draw_line(X + W - lineW, Y + H, X + W, Y + H, thickness, inlinecolor);//bot right
+	draw_line(X + W, Y + H - lineH, X + W, Y + H, thickness, inlinecolor);
+}
+
+void draw_text(const char* text, float x, float y, D3DCOLOR color) {
+	RECT rect;
+
+	if (!hack->FontF)
+		D3DXCreateFont(pDevice, 14, 0, FW_NORMAL, 1, false, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_DONTCARE, "Verdana", &hack->FontF);
+
+	SetRect(&rect, x + 1, y + 1, x + 1, y + 1);
+	hack->FontF->DrawTextA(NULL, text, -1, &rect, DT_CENTER | DT_NOCLIP, D3DCOLOR_ARGB(255, 0, 0, 0));
+
+	SetRect(&rect, x, y, x, y);
+	hack->FontF->DrawTextA(NULL, text, -1, &rect, DT_CENTER | DT_NOCLIP, color);
+}

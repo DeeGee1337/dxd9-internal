@@ -21,12 +21,17 @@ HWND GetProcessWindow() {
 	EnumWindows(enumWind, NULL);
 
 	RECT size;
-	GetWindowRect(window, &size);
+	//GetWindowRect(window, &size);
+	GetClientRect(window, &size);
+	
+	//windowWidth = size.right;
+	//windowHeight = size.top;
+
 	windowWidth = size.right - size.left;
 	windowHeight = size.bottom - size.top;
 
-	windowHeight -= 29;
-	windowWidth -= 5;
+	//windowHeight -= 29; //2k offsets
+	//windowWidth -= 5;   //2k offsets
 
 	return window;
 }

@@ -3,7 +3,9 @@
 
 namespace offsets
 {
+
 	//signatures
+
 	constexpr ptrdiff_t dwClientState = 0x58EFE4;
 	constexpr ptrdiff_t dwClientState_GetLocalPlayer = 0x180;
 	constexpr ptrdiff_t dwClientState_IsHLTV = 0x4D48;
@@ -17,52 +19,53 @@ namespace offsets
 	constexpr ptrdiff_t clientstate_last_outgoing_command = 0x4D2C;
 	constexpr ptrdiff_t clientstate_choked_commands = 0x4D30;
 	constexpr ptrdiff_t clientstate_net_channel = 0x9C;
-	constexpr ptrdiff_t dwEntityList = 0x4DA0D54;
-	constexpr ptrdiff_t dwForceAttack = 0x31D22C0;
-	constexpr ptrdiff_t dwForceAttack2 = 0x31D22CC;
-	constexpr ptrdiff_t dwForceBackward = 0x31D2314;
-	constexpr ptrdiff_t dwForceForward = 0x31D22F0;
-	constexpr ptrdiff_t dwForceJump = 0x524ACB4;
-	constexpr ptrdiff_t dwForceLeft = 0x31D2308;
-	constexpr ptrdiff_t dwForceRight = 0x31D2290;
+	constexpr ptrdiff_t dwEntityList = 0x4DA1F24;
+	constexpr ptrdiff_t dwForceAttack = 0x31D3460;
+	constexpr ptrdiff_t dwForceAttack2 = 0x31D346C;
+	constexpr ptrdiff_t dwForceBackward = 0x31D349C;
+	constexpr ptrdiff_t dwForceForward = 0x31D3478;
+	constexpr ptrdiff_t dwForceJump = 0x524BE84;
+	constexpr ptrdiff_t dwForceLeft = 0x31D3490;
+	constexpr ptrdiff_t dwForceRight = 0x31D34B4;
 	constexpr ptrdiff_t dwGameDir = 0x62D7F8;
-	constexpr ptrdiff_t dwGameRulesProxy = 0x52BDF9C;
-	constexpr ptrdiff_t dwGetAllClasses = 0xDB0D6C;
+	constexpr ptrdiff_t dwGameRulesProxy = 0x52BF16C;
+	constexpr ptrdiff_t dwGetAllClasses = 0xDB1F8C;
 	constexpr ptrdiff_t dwGlobalVars = 0x58ECE8;
-	constexpr ptrdiff_t dwGlowObjectManager = 0x52E9348;
-	constexpr ptrdiff_t dwInput = 0x51F2338;
-	constexpr ptrdiff_t dwInterfaceLinkList = 0x945174;
-	constexpr ptrdiff_t dwLocalPlayer = 0xD892AC;
-	constexpr ptrdiff_t dwMouseEnable = 0xD8EE50;
-	constexpr ptrdiff_t dwMouseEnablePtr = 0xD8EE20;
-	constexpr ptrdiff_t dwPlayerResource = 0x31D0610;
-	constexpr ptrdiff_t dwRadarBase = 0x51D5ACC;
-	constexpr ptrdiff_t dwSensitivity = 0xDA015C;
-	constexpr ptrdiff_t dwSensitivityPtr = 0xDA0130;
+	constexpr ptrdiff_t dwGlowObjectManager = 0x52EA520;
+	constexpr ptrdiff_t dwInput = 0x51F3508;
+	constexpr ptrdiff_t dwInterfaceLinkList = 0x945544;
+	constexpr ptrdiff_t dwLocalPlayer = 0xD8A2BC;
+	constexpr ptrdiff_t dwMouseEnable = 0xD8FE60;
+	constexpr ptrdiff_t dwMouseEnablePtr = 0xD8FE30;
+	constexpr ptrdiff_t dwPlayerResource = 0x31D17E0;
+	constexpr ptrdiff_t dwRadarBase = 0x51D6C9C;
+	constexpr ptrdiff_t dwSensitivity = 0xDA12CC;
+	constexpr ptrdiff_t dwSensitivityPtr = 0xDA12A0;
 	constexpr ptrdiff_t dwSetClanTag = 0x8A1A0;
-	constexpr ptrdiff_t dwViewMatrix = 0x4D92654;
-	constexpr ptrdiff_t dwWeaponTable = 0x51F2DF8;
+	constexpr ptrdiff_t dwViewMatrix = 0x4D93824;
+	constexpr ptrdiff_t dwWeaponTable = 0x51F3FC8;
 	constexpr ptrdiff_t dwWeaponTableIndex = 0x325C;
-	constexpr ptrdiff_t dwYawPtr = 0xCE820002;
-	constexpr ptrdiff_t dwZoomSensitivityRatioPtr = 0xD93D50;
+	constexpr ptrdiff_t dwYawPtr = 0xD2660002;
+	constexpr ptrdiff_t dwZoomSensitivityRatioPtr = 0xD94D60;
 	constexpr ptrdiff_t dwbSendPackets = 0xD73EA;
 	constexpr ptrdiff_t dwppDirect3DDevice9 = 0xA7050;
 	constexpr ptrdiff_t m_pStudioHdr = 0x294C;
-	constexpr ptrdiff_t m_yawClassPtr = 0xD8EAB0;
-	constexpr ptrdiff_t m_pitchClassPtr = 0x51D5D68;
+	constexpr ptrdiff_t m_yawClassPtr = 0xD8FAC0;
+	constexpr ptrdiff_t m_pitchClassPtr = 0x51D6F38;
 	constexpr ptrdiff_t interface_engine_cvar = 0x3E9EC;
 	constexpr ptrdiff_t convar_name_hash_table = 0x2F0F8;
 	constexpr ptrdiff_t m_bDormant = 0xED;
 	constexpr ptrdiff_t model_ambient_min = 0x59205C;
-	constexpr ptrdiff_t set_abs_angles = 0x1DF810;
-	constexpr ptrdiff_t set_abs_origin = 0x1DF650;
-	constexpr ptrdiff_t is_c4_owner = 0x3BA1C0;
-	constexpr ptrdiff_t force_update_spectator_glow = 0x3AD6E2;
+	constexpr ptrdiff_t set_abs_angles = 0x1DF9C0;
+	constexpr ptrdiff_t set_abs_origin = 0x1DF800;
+	constexpr ptrdiff_t is_c4_owner = 0x3BA430;
+	constexpr ptrdiff_t force_update_spectator_glow = 0x3AD962;
 	constexpr ptrdiff_t anim_overlays = 0x2980;
 	constexpr ptrdiff_t m_flSpawnTime = 0xA370;
-	constexpr ptrdiff_t find_hud_element = 0x31A9E0C0;
+	constexpr ptrdiff_t find_hud_element = 0x2DC5E320;
 
 	//netvars
+
 	constexpr ptrdiff_t m_ArmorValue = 0xB378;
 	constexpr ptrdiff_t m_Collision = 0x320;
 	constexpr ptrdiff_t m_CollisionGroup = 0x474;
@@ -148,4 +151,5 @@ namespace offsets
 	constexpr ptrdiff_t m_flCustomBloomScale = 0x9E4;
 	constexpr ptrdiff_t m_flCustomAutoExposureMin = 0x9DC;
 	constexpr ptrdiff_t m_flCustomAutoExposureMax = 0x9E0;
+
 }
