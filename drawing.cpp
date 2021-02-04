@@ -51,38 +51,21 @@ void draw_esp_box_2d(Vec2 top, Vec2 bot, int thickness, D3DCOLOR color)
 	draw_line(bl, br, thickness, color);
 	draw_line(tl, bl, thickness, color);
 	draw_line(tr, br, thickness, color);
-}
 
-void draw_esp_cornerbox_2d(Vec2 top, Vec2 bot, int thickness, D3DCOLOR inlinecolor, D3DCOLOR OutLine)
-{
-	int H = ABS(top.y - bot.y);
-	int W = ABS(top.x - top.x);
-	int X = top.x - H / 4;
-	int Y = top.y;
-
-	float lineW = (100 / 5); // hardcoded
-	float lineH = (100 / 6); // hardcoded
-	float lineT = 1;
-
-	//outline;
-	draw_line(X - lineT, Y - lineT, X + lineW, Y - lineT, thickness, OutLine); //top left
-	draw_line(X - lineT, Y - lineT, X - lineT, Y + lineH, thickness, OutLine);
-	draw_line(X - lineT, Y + H - lineH, X - lineT, Y + H + lineT, thickness, OutLine); //bot left
-	draw_line(X - lineT, Y + H + lineT, X + lineW, Y + H + lineT, thickness, OutLine);
-	draw_line(X + W - lineW, Y - lineT, X + W + lineT, Y - lineT, thickness, OutLine); // top right
-	draw_line(X + W + lineT, Y - lineT, X + W + lineT, Y + lineH, thickness, OutLine);
-	draw_line(X + W + lineT, Y + H - lineH, X + W + lineT, Y + H + lineT, thickness, OutLine); // bot right
-	draw_line(X + W - lineW, Y + H + lineT, X + W + lineT, Y + H + lineT, thickness, OutLine);
-
-	//inline
-	draw_line(X, Y, X, Y + lineH, thickness, inlinecolor);//top left
-	draw_line(X, Y, X + lineW, Y, thickness, inlinecolor);
-	draw_line(X + W - lineW, Y, X + W, Y, thickness, inlinecolor); //top right
-	draw_line(X + W, Y, X + W, Y + lineH, thickness, inlinecolor);
-	draw_line(X, Y + H - lineH, X, Y + H, thickness, inlinecolor); //bot left
-	draw_line(X, Y + H, X + lineW, Y + H, thickness, inlinecolor);
-	draw_line(X + W - lineW, Y + H, X + W, Y + H, thickness, inlinecolor);//bot right
-	draw_line(X + W, Y + H - lineH, X + W, Y + H, thickness, inlinecolor);
+	//outlines
+	
+	//unten
+	draw_line(tl.x, tl.y-1, tr.x, tr.y-1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(tl.x, tl.y+1, tr.x, tr.y+1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	//oben
+	draw_line(bl.x, bl.y - 1, br.x, br.y - 1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(bl.x, bl.y + 1, br.x, br.y + 1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	//links
+	draw_line(tl.x - 1, tl.y, bl.x - 1, bl.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(tl.x + 1, tl.y, bl.x + 1, bl.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	//rechts
+	draw_line(tr.x - 1, tr.y, br.x - 1, br.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(tr.x + 1, tr.y, br.x + 1, br.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
 }
 
 void draw_text(const char* text, float x, float y, D3DCOLOR color) {

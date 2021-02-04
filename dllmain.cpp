@@ -15,6 +15,7 @@ bool rcs = true;
 bool triggerbot = true;
 bool bunnyhop = true;
 bool aimbot = false;
+bool show_menu = false;
 
 // data
 void* d3d9Device[119];
@@ -29,6 +30,7 @@ tCreateInterface CreateInterface;
 
 int CenterX = GetSystemMetrics(0) / 2 - 1; // gets screen X resolution then cutting it in half to ##### the center.
 int CenterY = GetSystemMetrics(1) / 2 - 1; // gets screen Y resolution then cutting it in half to ##### the center.
+
 
 Player* GetClosestEnemy()
 {
@@ -77,6 +79,32 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 		pDevice = o_pDevice;
 
 	// drawing stuff
+
+	//menu
+	int mennuOffX = 100;
+	int menuOffY = windowHeight / 2;
+
+	D3DCOLOR enabled = D3DCOLOR_ARGB(255,255,255,255);
+	D3DCOLOR disabled = D3DCOLOR_ARGB(255, 255, 0, 0);
+
+	if (show_menu)
+	{
+		draw_text("Open Menu (Insert)", mennuOffX, menuOffY, D3DCOLOR_ARGB(255, 255, 255, 255));
+	}
+	else
+	{
+		bool isTrue = true;
+		std::string answer = isTrue ? "true" : "false";
+
+		draw_text("[F1] Aimbot",	mennuOffX, menuOffY + 0 * 12, aimbot ? enabled : disabled);
+		draw_text("[F2] RCS",	mennuOffX, menuOffY + 1 * 12, rcs ? enabled : disabled);
+		draw_text("[F3] Triggerbot",	mennuOffX, menuOffY + 2 * 12, triggerbot ? enabled : disabled);
+		draw_text("[F4] Player ESP",	mennuOffX, menuOffY + 3 * 12, box_esp_2d ? enabled : disabled);
+		draw_text("[F5] Snapline ESP",	mennuOffX, menuOffY + 4 * 12, snapline_esp ? enabled : disabled);
+		draw_text("[F6] Glow",	mennuOffX, menuOffY + 5 * 12, glow ? enabled : disabled);
+		draw_text("[F7] Bunnyhop",	mennuOffX, menuOffY + 6 * 12, bunnyhop ? enabled : disabled);
+		draw_text("[F8] Recoil Crosshair",	mennuOffX, menuOffY + 7 * 12, recoil_crosshair ? enabled : disabled);
+	}
 
 	//Watermark
 	draw_text("-- DeeGee Negerhook --", windowWidth / 2, windowHeight - 20, D3DCOLOR_ARGB(255, 255, 255, 255));
@@ -133,7 +161,12 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 					topArmor.x = entPos2D.x + (height / 4) + offset - (dX * armorPct);
 
 					draw_line(botHealth, topHealth, offset, D3DCOLOR_ARGB(255, 0, 255, 0));
+					draw_line(topHealth.x - 1.5f, topHealth.y, botHealth.x - 1.5f, botHealth.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
+					draw_line(topHealth.x + 1.5f, topHealth.y, botHealth.x + 1.5f, botHealth.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
+
 					draw_line(botArmor, topArmor, offset, D3DCOLOR_ARGB(255, 0, 255, 255));
+					draw_line(topArmor.x - 1.5f, topArmor.y, botArmor.x - 1.5f, botArmor.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
+					draw_line(topArmor.x + 1.5f, topArmor.y, botArmor.x + 1.5f, botArmor.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
 				}
 
 				if (textesp)
@@ -213,6 +246,9 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	// hack loop
 	while (!GetAsyncKeyState(VK_END)) 
 	{
+		if (GetAsyncKeyState(VK_INSERT) & 1)
+			show_menu = !show_menu;
+
 		if (GetAsyncKeyState(VK_F1) & 1)
 			aimbot = !aimbot;
 
