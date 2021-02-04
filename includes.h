@@ -7,6 +7,7 @@
 #include <chrono>
 #include <string.h>
 #include <sstream>
+#include <atomic>
 
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -21,3 +22,5 @@
 #include "offsets.h"
 #include "player.h"
 #include "localplayer.h"
+
+extern Hack* hack;

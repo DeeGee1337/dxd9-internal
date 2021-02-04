@@ -1,14 +1,16 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (Dummy.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  dllmain.cpp
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(97,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(97,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(107,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(108,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(114,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(115,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  localplayer.cpp
+C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(55,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(56,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(103,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(104,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(155,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(254,27): warning C4305: '*=': truncation from 'double' to 'float'
+C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(255,27): warning C4305: '*=': truncation from 'double' to 'float'
   Generating code
-  0 of 52 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(287): warning C4715: 'LocalPlayer::setViewAngle': not all control paths return a value
+  2 of 178 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Dummy.vcxproj -> C:\Users\Anon\Documents\GitHub\dxd9 internal\Release\dxd9 internal.dll

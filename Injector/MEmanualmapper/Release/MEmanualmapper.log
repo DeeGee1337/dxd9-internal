@@ -1,7 +1,5 @@
-﻿  memanualmapper.cpp
-  Generating code
-  4 of 159 functions ( 2.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+﻿  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 159 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   MEmanualmapper.vcxproj -> C:\Users\Anon\Documents\GitHub\dxd9 internal\Injector\Release\MEmanualmapper.exe
