@@ -1,15 +1,58 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (Dummy.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  localplayer.cpp
-C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(55,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(56,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(103,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(104,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(155,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(254,27): warning C4305: '*=': truncation from 'double' to 'float'
-C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(255,27): warning C4305: '*=': truncation from 'double' to 'float'
+  dllmain.cpp
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(136,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(136,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(149,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(150,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(150,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(151,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(151,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(152,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(152,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(153,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(153,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(154,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(154,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(155,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(155,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(156,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(156,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(157,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(157,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(158,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(158,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(162,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(162,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(184,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(184,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(195,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(196,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(202,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(203,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(216,78): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(216,61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(216,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(216,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(217,78): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(217,61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(217,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(217,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(220,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(220,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(220,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(220,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(221,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(221,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(221,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(221,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(401,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(402,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(405,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(406,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Anon\Documents\GitHub\dxd9 internal\dllmain.cpp(428,11): warning C4101: 'pos2D': unreferenced local variable
   Generating code
-C:\Users\Anon\Documents\GitHub\dxd9 internal\localplayer.cpp(287): warning C4715: 'LocalPlayer::setViewAngle': not all control paths return a value
-  2 of 178 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
+  1 of 178 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

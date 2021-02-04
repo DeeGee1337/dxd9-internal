@@ -226,12 +226,10 @@ Vector3 LocalPlayer::setViewAngle(Vector3* target, int aimSpeed, bool rcsActive)
 	//g_calc_angle.y = yaw;
 
 
-	deltaAngle = smoothRotation(deltaAngle, ((0.10f * ((float)aimSpeed*1000)) + 0.5f));
+	deltaAngle = smoothRotation(deltaAngle, ((0.10f * ((float)aimSpeed)) + 0.5f)); //*1000 for legit
 
 	/*g_after_smooth.x = deltaAngle.x;
 	g_after_smooth.y = deltaAngle.y;*/
-
-
 
 	Vector3 finalRotation;
 	finalRotation.x = deltaAngle.x + currentAngle.x;

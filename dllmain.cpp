@@ -19,6 +19,7 @@ bool show_menu = false;
 
 // data
 int aimSpeed = 30;
+float setFOV = 1.4f;
 void* d3d9Device[119];
 BYTE EndSceneBytes[7]{ 0 };
 tEndScene oEndScene = nullptr;
@@ -101,7 +102,7 @@ Player* GetClosestCrosshairEnemy(int bonepos, Vector3& targetPos, float& FOV)
 
 		auto position = currentPlayer->GetBonePos(bonepos);
 		float currentDistance = localPlayer->fovTo(position);
-		if (currentDistance < closestDitance)
+		if (currentDistance < closestDitance && currentDistance < setFOV)
 		{
 			FOV = currentDistance;
 			targetPos = *position;
@@ -141,6 +142,9 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 		char dbg_buff[100];
 		sprintf_s<100>(dbg_buff, "AIMSPEED %i", aimSpeed);
+
+		char dbg_buff2[100];
+		sprintf_s<100>(dbg_buff2, "FOV %0.2f", setFOV);
 		
 		draw_text("[F1] Aimbot",	mennuOffX, menuOffY + 0 * 12, aimbot ? enabled : disabled);
 		draw_text("[F2] RCS",	mennuOffX, menuOffY + 1 * 12, rcs ? enabled : disabled);
@@ -151,6 +155,7 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 		draw_text("[F7] Bunnyhop",	mennuOffX, menuOffY + 6 * 12, bunnyhop ? enabled : disabled);
 		draw_text("[F8] Recoil Crosshair",	mennuOffX, menuOffY + 7 * 12, recoil_crosshair ? enabled : disabled);
 		draw_text(dbg_buff, mennuOffX, menuOffY + 8 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
+		draw_text(dbg_buff2, mennuOffX, menuOffY + 9 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
 	}
 
 	//Watermark
@@ -320,11 +325,17 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 		if (GetAsyncKeyState(VK_F8) & 1)
 			recoil_crosshair = !recoil_crosshair;
 
-		if (GetAsyncKeyState(VK_ADD) & 1)
+		if (GetAsyncKeyState(VK_UP) & 1)
 			aimSpeed++;
 
-		if (GetAsyncKeyState(VK_SUBTRACT) & 1)
+		if (GetAsyncKeyState(VK_DOWN) & 1)
 			aimSpeed--;
+
+		if (GetAsyncKeyState(VK_LEFT) & 1)
+			setFOV = setFOV - 0.1f;
+
+		if (GetAsyncKeyState(VK_RIGHT) & 1)
+			setFOV = setFOV + 0.1f;
 
 		hack->Update();
 
@@ -425,7 +436,7 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 						draw_text(dbg_txt, pos2D.x, pos2D.y, D3DCOLOR_ARGB(255, 255, 255, 255));
 					}*/
 
-					if (GetAsyncKeyState(VK_MENU) & 0x8000)
+					if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
 					{
 						//LocalPlayer::Get()->AimAt(closestEnemy->GetBonePos(8));
 						//Sleep(1);
