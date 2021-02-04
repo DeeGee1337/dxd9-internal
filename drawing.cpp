@@ -47,25 +47,29 @@ void draw_esp_box_2d(Vec2 top, Vec2 bot, int thickness, D3DCOLOR color)
 	bl.y = br.y = bot.y;
 
 
-	draw_line(tl, tr, thickness, color);
-	draw_line(bl, br, thickness, color);
-	draw_line(tl, bl, thickness, color);
-	draw_line(tr, br, thickness, color);
+	//draw_line(tl, tr, thickness, color);
+	//draw_line(bl, br, thickness, color);
+	//draw_line(tl, bl, thickness, color);
+	//draw_line(tr, br, thickness, color);
 
 	//outlines
 	
 	//unten
-	draw_line(tl.x, tl.y-1, tr.x, tr.y-1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
-	draw_line(tl.x, tl.y+1, tr.x, tr.y+1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(bl.x, tl.y-1, br.x, tr.y-1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(bl.x, tl.y, br.x, tr.y, thickness, color);
+	draw_line(bl.x, tl.y+1, br.x, tr.y+1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
 	//oben
 	draw_line(bl.x, bl.y - 1, br.x, br.y - 1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(bl, br, thickness, color);
 	draw_line(bl.x, bl.y + 1, br.x, br.y + 1, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
 	//links
-	draw_line(tl.x - 1, tl.y, bl.x - 1, bl.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
-	draw_line(tl.x + 1, tl.y, bl.x + 1, bl.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(bl.x - 1, tl.y, bl.x - 1, bl.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(bl.x, tl.y, bl.x, bl.y, thickness, color);
+	draw_line(bl.x + 1, tl.y, bl.x + 1, bl.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
 	//rechts
-	draw_line(tr.x - 1, tr.y, br.x - 1, br.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
-	draw_line(tr.x + 1, tr.y, br.x + 1, br.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(br.x - 1, tr.y, br.x - 1, br.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
+	draw_line(br.x, tr.y, br.x, br.y, thickness, color);
+	draw_line(br.x + 1, tr.y, br.x + 1, br.y, thickness, D3DCOLOR_ARGB(255, 0, 0, 0));
 }
 
 void draw_text(const char* text, float x, float y, D3DCOLOR color) {

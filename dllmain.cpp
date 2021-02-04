@@ -19,7 +19,7 @@ bool show_menu = false;
 
 // data
 int aimSpeed = 30;
-float setFOV = 1.4f;
+float setFOV = 1.0f;
 void* d3d9Device[119];
 BYTE EndSceneBytes[7]{ 0 };
 tEndScene oEndScene = nullptr;
@@ -212,13 +212,16 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 					topHealth.x = entPos2D.x - (height / 4) - offset - (dX * healthPct);
 					topArmor.x = entPos2D.x + (height / 4) + offset - (dX * armorPct);
 
-					draw_line(botHealth, topHealth, offset, D3DCOLOR_ARGB(255, 0, 255, 0));
-					draw_line(topHealth.x - 1.5f, topHealth.y, botHealth.x - 1.5f, botHealth.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
-					draw_line(topHealth.x + 1.5f, topHealth.y, botHealth.x + 1.5f, botHealth.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
+					//draw_line(botHealth, topHealth, offset, D3DCOLOR_ARGB(255, 0, 255, 0));
 
-					draw_line(botArmor, topArmor, offset, D3DCOLOR_ARGB(255, 0, 255, 255));
-					draw_line(topArmor.x - 1.5f, topArmor.y, botArmor.x - 1.5f, botArmor.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
-					draw_line(topArmor.x + 1.5f, topArmor.y, botArmor.x + 1.5f, botArmor.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
+					draw_line(topHealth.x - 1.5f, topHealth.y, topHealth.x - 1.5f, botHealth.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
+					draw_line(topHealth.x, topHealth.y, topHealth.x, botHealth.y, offset, D3DCOLOR_ARGB(255, 0, 255, 0));
+					draw_line(topHealth.x + 1.5f, topHealth.y, topHealth.x + 1.5f, botHealth.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
+
+					//draw_line(botArmor, topArmor, offset, D3DCOLOR_ARGB(255, 0, 255, 255));
+					draw_line(topArmor.x - 1.5f, topArmor.y, topArmor.x - 1.5f, botArmor.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
+					draw_line(topArmor.x, topArmor.y, topArmor.x, botArmor.y, offset, D3DCOLOR_ARGB(255, 0, 255, 255));
+					draw_line(topArmor.x + 1.5f, topArmor.y, topArmor.x + 1.5f, botArmor.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
 				}
 
 				if (textesp)
