@@ -304,8 +304,8 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	while (!GetAsyncKeyState(VK_END))
 	{
 		//maybe crash -> ingame check needed
-		if (*reinterpret_cast<int*>(*reinterpret_cast<uintptr_t*>(hack->engine + offsets::dwClientState) + offsets::dwClientState_State) != 6)
-			continue;
+		/*if (*reinterpret_cast<int*>(*reinterpret_cast<uintptr_t*>(hack->engine + offsets::dwClientState) + offsets::dwClientState_State) != 6)
+			continue;*/
 
 		if (GetAsyncKeyState(VK_INSERT) & 1)
 			show_menu = !show_menu;
