@@ -19,39 +19,39 @@ namespace offsets
 	constexpr ptrdiff_t clientstate_last_outgoing_command = 0x4D2C;
 	constexpr ptrdiff_t clientstate_choked_commands = 0x4D30;
 	constexpr ptrdiff_t clientstate_net_channel = 0x9C;
-	constexpr ptrdiff_t dwEntityList = 0x4DA1F24;
-	constexpr ptrdiff_t dwForceAttack = 0x31D3460;
-	constexpr ptrdiff_t dwForceAttack2 = 0x31D346C;
-	constexpr ptrdiff_t dwForceBackward = 0x31D349C;
-	constexpr ptrdiff_t dwForceForward = 0x31D3478;
-	constexpr ptrdiff_t dwForceJump = 0x524BE84;
-	constexpr ptrdiff_t dwForceLeft = 0x31D3490;
-	constexpr ptrdiff_t dwForceRight = 0x31D34B4;
+	constexpr ptrdiff_t dwEntityList = 0x4DA2F54;
+	constexpr ptrdiff_t dwForceAttack = 0x31D44E4;
+	constexpr ptrdiff_t dwForceAttack2 = 0x31D44F0;
+	constexpr ptrdiff_t dwForceBackward = 0x31D449C;
+	constexpr ptrdiff_t dwForceForward = 0x31D4508;
+	constexpr ptrdiff_t dwForceJump = 0x524CEB4;
+	constexpr ptrdiff_t dwForceLeft = 0x31D4490;
+	constexpr ptrdiff_t dwForceRight = 0x31D44B4;
 	constexpr ptrdiff_t dwGameDir = 0x62D7F8;
-	constexpr ptrdiff_t dwGameRulesProxy = 0x52BF16C;
-	constexpr ptrdiff_t dwGetAllClasses = 0xDB1F8C;
+	constexpr ptrdiff_t dwGameRulesProxy = 0x52C019C;
+	constexpr ptrdiff_t dwGetAllClasses = 0xDB2F8C;
 	constexpr ptrdiff_t dwGlobalVars = 0x58ECE8;
-	constexpr ptrdiff_t dwGlowObjectManager = 0x52EA520;
-	constexpr ptrdiff_t dwInput = 0x51F3508;
-	constexpr ptrdiff_t dwInterfaceLinkList = 0x945544;
-	constexpr ptrdiff_t dwLocalPlayer = 0xD8A2BC;
-	constexpr ptrdiff_t dwMouseEnable = 0xD8FE60;
-	constexpr ptrdiff_t dwMouseEnablePtr = 0xD8FE30;
-	constexpr ptrdiff_t dwPlayerResource = 0x31D17E0;
-	constexpr ptrdiff_t dwRadarBase = 0x51D6C9C;
-	constexpr ptrdiff_t dwSensitivity = 0xDA12CC;
-	constexpr ptrdiff_t dwSensitivityPtr = 0xDA12A0;
+	constexpr ptrdiff_t dwGlowObjectManager = 0x52EB558;
+	constexpr ptrdiff_t dwInput = 0x51F4538;
+	constexpr ptrdiff_t dwInterfaceLinkList = 0x9457A4;
+	constexpr ptrdiff_t dwLocalPlayer = 0xD8B2BC;
+	constexpr ptrdiff_t dwMouseEnable = 0xD90E60;
+	constexpr ptrdiff_t dwMouseEnablePtr = 0xD90E30;
+	constexpr ptrdiff_t dwPlayerResource = 0x31D2810;
+	constexpr ptrdiff_t dwRadarBase = 0x51D7CCC;
+	constexpr ptrdiff_t dwSensitivity = 0xDA22CC;
+	constexpr ptrdiff_t dwSensitivityPtr = 0xDA22A0;
 	constexpr ptrdiff_t dwSetClanTag = 0x8A1A0;
-	constexpr ptrdiff_t dwViewMatrix = 0x4D93824;
-	constexpr ptrdiff_t dwWeaponTable = 0x51F3FC8;
+	constexpr ptrdiff_t dwViewMatrix = 0x4D94854;
+	constexpr ptrdiff_t dwWeaponTable = 0x51F4FF8;
 	constexpr ptrdiff_t dwWeaponTableIndex = 0x325C;
-	constexpr ptrdiff_t dwYawPtr = 0xD0B20002;
-	constexpr ptrdiff_t dwZoomSensitivityRatioPtr = 0xD94D60;
+	constexpr ptrdiff_t dwYawPtr = 0xCD830002;
+	constexpr ptrdiff_t dwZoomSensitivityRatioPtr = 0xD95D60;
 	constexpr ptrdiff_t dwbSendPackets = 0xD73EA;
 	constexpr ptrdiff_t dwppDirect3DDevice9 = 0xA7050;
 	constexpr ptrdiff_t m_pStudioHdr = 0x294C;
-	constexpr ptrdiff_t m_yawClassPtr = 0xD8FAC0;
-	constexpr ptrdiff_t m_pitchClassPtr = 0x51D6F38;
+	constexpr ptrdiff_t m_yawClassPtr = 0xD90AC0;
+	constexpr ptrdiff_t m_pitchClassPtr = 0x51D7F68;
 	constexpr ptrdiff_t interface_engine_cvar = 0x3E9EC;
 	constexpr ptrdiff_t convar_name_hash_table = 0x2F0F8;
 	constexpr ptrdiff_t m_bDormant = 0xED;
@@ -62,7 +62,7 @@ namespace offsets
 	constexpr ptrdiff_t force_update_spectator_glow = 0x3AD962;
 	constexpr ptrdiff_t anim_overlays = 0x2980;
 	constexpr ptrdiff_t m_flSpawnTime = 0xA370;
-	constexpr ptrdiff_t find_hud_element = 0x2F79E320;
+	constexpr ptrdiff_t find_hud_element = 0x32A8E320;
 
 	//netvars
 
@@ -153,3 +153,4 @@ namespace offsets
 	constexpr ptrdiff_t m_flCustomAutoExposureMax = 0x9E0;
 
 }
+

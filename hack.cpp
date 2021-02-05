@@ -55,6 +55,7 @@ Vec3 Hack::GetBonePos(Ent* ent, int bone)
 	return bonePos;
 }
 
+
 //bool Hack::IsValidTarget(Ent* localPlayer, Ent* ent)
 //{
 //	if (ent && ent->iTeamNum != localPlayer->iTeamNum && ent->clientId != localPlayer->clientId && ent->m_lifeState == 0)

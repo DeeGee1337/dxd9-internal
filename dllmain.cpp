@@ -17,6 +17,7 @@ bool bunnyhop = true;
 bool aimbot = true;
 bool show_menu = false;
 
+
 // data
 int aimSpeed = 30;
 float setFOV = 1.0f;
@@ -283,6 +284,7 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	hack = new Hack();
 	hack->Init();
 
+
 	////tracedata
 	//CreateInterface = (tCreateInterface)GetProcAddress((HMODULE)hack->engine, "CreateInterface");
 	//IEngineTrace* EngineTrace = (IEngineTrace*)GetInterface(CreateInterface, "EngineTraceClient004");
@@ -301,6 +303,10 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	// hack loop
 	while (!GetAsyncKeyState(VK_END))
 	{
+		//maybe crash -> ingame check needed
+		if (*reinterpret_cast<int*>(*reinterpret_cast<uintptr_t*>(hack->engine + offsets::dwClientState) + offsets::dwClientState_State) != 6)
+			continue;
+
 		if (GetAsyncKeyState(VK_INSERT) & 1)
 			show_menu = !show_menu;
 
@@ -412,6 +418,7 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 						}
 					}
 				}
+
 			}
 		}
 
