@@ -249,7 +249,7 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 					}
 					else 
 					{
-						color = D3DCOLOR_ARGB(255, 255, 0, 0);q
+						color = D3DCOLOR_ARGB(255, 255, 0, 0);
 					}
 
 					draw_esp_box_2d(entPos2D, entHead2D, 1, color);
