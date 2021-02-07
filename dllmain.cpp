@@ -138,44 +138,6 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 	CreateInterface = (tCreateInterface)GetProcAddress((HMODULE)hack->engine, "CreateInterface");
 	IEngineTrace* EngineTrace = (IEngineTrace*)GetInterface(CreateInterface, "EngineTraceClient004");
 
-	//if (true)
-	//{
-	//	EntList* entList = (EntList*)(hack->client + offsets::dwEntityList);
-
-	//	for (auto currEnt : entList->ents)
-	//	{
-
-	//		if (currEnt.ent && currEnt.ent->iTeamNum != *LocalPlayer::Get()->GetTeam())
-	//		{
-	//			vec3 eyepos;
-	//			eyepos.x = LocalPlayer::Get()->GetOrigin()->x + LocalPlayer::Get()->GetViewOffset()->x;
-	//			eyepos.y = LocalPlayer::Get()->GetOrigin()->y + LocalPlayer::Get()->GetViewOffset()->y;
-	//			eyepos.z = LocalPlayer::Get()->GetOrigin()->z + LocalPlayer::Get()->GetViewOffset()->z;
-	//			vec3 targeteyepos = currEnt.ent->m_vecOrigin + currEnt.ent->m_vecViewOffset;
-
-	//			CGameTrace trace;
-	//			Ray_t ray;
-	//			CTraceFilter tracefilter;
-	//			tracefilter.pSkip = (void*)LocalPlayer::Get();
-
-	//			ray.Init(eyepos, targeteyepos);
-
-	//			EngineTrace->TraceRay(ray, MASK_SHOT | CONTENTS_GRATE, &tracefilter, &trace);
-
-	//			if (currEnt.ent == trace.hit_entity)
-	//			{
-	//				//std::cout << "Ent 0x" << std::hex << currEnt.ent << " is visible\n";
-	//				//char dbg_buffvis[100];
-	//				int mennuOffX2 = 500;
-	//				int menuOffY2 = windowHeight / 2;
-	//				//sprintf_s<100>(dbg_buffvis, "is visable 0x", currEnt.ent);
-	//				draw_text("VISABLE", mennuOffX2, menuOffY2 , D3DCOLOR_ARGB(255, 255, 255, 255));
-	//			}
-
-	//		}
-	//	}
-	//}
-
 	// drawing stuff
 
 	//menu
@@ -285,8 +247,9 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 						draw_text("visable", entHead2D.x, entHead2D.y - 14, D3DCOLOR_ARGB(255, 255, 255, 255));
 						color = D3DCOLOR_ARGB(255, 0, 255, 0);
 					}
-					else {
-						color = D3DCOLOR_ARGB(255, 255, 0, 0);
+					else 
+					{
+						color = D3DCOLOR_ARGB(255, 255, 0, 0);q
 					}
 
 					draw_esp_box_2d(entPos2D, entHead2D, 1, color);
