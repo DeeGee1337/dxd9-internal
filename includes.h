@@ -22,5 +22,7 @@
 #include "offsets.h"
 #include "player.h"
 #include "localplayer.h"
+#include "csgotrace.h"
+#include "csgoVector.h"
 
 extern Hack* hack;

@@ -1,16 +1,6 @@
 #pragma once
-
-#include <cmath>
 #include "csgoVector.h"
 #include "hack.h"
-#include <cfloat>
-
-typedef void* (__cdecl* tCreateInterface) (const char* name, int* returnCode);
-
-void* GetInterface(tCreateInterface fn, const char* name)
-{
-    return (fn)(name, 0);
-}
 
 //new:
 struct cplane_t
