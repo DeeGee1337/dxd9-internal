@@ -140,6 +140,7 @@
     <ClCompile Include="player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="classID.h" />
     <ClInclude Include="csgotrace.h" />
     <ClInclude Include="csgoVector.h" />
     <ClInclude Include="drawing.h" />

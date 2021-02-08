@@ -68,5 +68,8 @@
     <ClInclude Include="csgotrace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="classID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

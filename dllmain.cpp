@@ -15,11 +15,13 @@ bool noflash = false;
 bool radarhack = false;
 bool customFOVtoggle = false;
 bool show_menu = true;
+bool hitmarker = false;
 
 // data
 int aimSpeed = 30;
 float setFOV = 1.0f;
 int customFOV = 110;
+time_t hit_time;
 void* d3d9Device[119];
 BYTE EndSceneBytes[7]{ 0 };
 tEndScene oEndScene = nullptr;
@@ -38,6 +40,103 @@ void* GetInterface(tCreateInterface fn, const char* name)
 
 tTraceRay TraceRay;
 tCreateInterface CreateInterface;
+
+bool currentWeaponIsSniper()
+{
+	uintptr_t* localEntPtr = (uintptr_t*)(hack->client + offsets::dwLocalPlayer);
+	uintptr_t localEnt = *localEntPtr;
+	int weapon = *(int*)(localEnt + offsets::m_hActiveWeapon);
+	int weaponEnt = *(int*)(hack->client + offsets::dwEntityList + ((weapon & 0xFFF) - 1) * 0x10);
+
+	if (weaponEnt)
+	{
+		int mennuOffX = 100;
+		int menuOffY = windowHeight / 2;
+		int myWeapon = *(int*)(weaponEnt + offsets::m_iItemDefinitionIndex);
+
+		char dbg_buffweapon[100];
+		sprintf_s<100>(dbg_buffweapon, "WeaponID %i", myWeapon);
+		draw_text(dbg_buffweapon, mennuOffX, menuOffY + 300, D3DCOLOR_ARGB(255, 255, 255, 255));
+
+		if(myWeapon == 9)
+			return true;
+
+		if (myWeapon == 40)
+			return true;
+
+		if (myWeapon == 38)
+			return true;
+
+		if (myWeapon == 11)
+			return true;
+	}
+	return false;
+}
+
+int Vischeck(Ent* curEnt)
+{
+	CreateInterface = (tCreateInterface)GetProcAddress((HMODULE)hack->engine, "CreateInterface");
+	IEngineTrace* EngineTrace = (IEngineTrace*)GetInterface(CreateInterface, "EngineTraceClient004");
+
+	vec3 eyepos;
+	eyepos.x = LocalPlayer::Get()->GetOrigin()->x + LocalPlayer::Get()->GetViewOffset()->x;
+	eyepos.y = LocalPlayer::Get()->GetOrigin()->y + LocalPlayer::Get()->GetViewOffset()->y;
+	eyepos.z = LocalPlayer::Get()->GetOrigin()->z + LocalPlayer::Get()->GetViewOffset()->z;
+	//vec3 targeteyepos = curEnt->m_vecOrigin + curEnt->m_vecViewOffset;
+
+	vec3 bonePos; //head
+	bonePos.x = *(float*)(curEnt->boneMatrix + 0x30 * 8 + 0x0C);
+	bonePos.y = *(float*)(curEnt->boneMatrix + 0x30 * 8 + 0x1C);
+	bonePos.z = *(float*)(curEnt->boneMatrix + 0x30 * 8 + 0x2C);
+
+	CGameTrace trace;
+	Ray_t ray;
+	CTraceFilter tracefilter;
+	tracefilter.pSkip = (void*)LocalPlayer::Get();
+
+	ray.Init(eyepos, bonePos);
+
+	EngineTrace->TraceRay(ray, MASK_SHOT | CONTENTS_GRATE, &tracefilter, &trace);
+
+	if (curEnt == trace.hit_entity)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+std::string get_weapon_name(int id)
+{
+	switch (id)
+	{
+	case 59:
+		return ("knive");
+
+	case 9:
+		return("AWP");
+
+	}
+	return "unknown";
+}
+
+//int GetClassID(DWORD Entity) //Creates our class ID for the entity we put inside
+//{
+//	DWORD dwClientNetworkable = *(DWORD*)(Entity + 0x8);
+//	DWORD dwGetClientClassFn = *(DWORD*)(dwClientNetworkable + 2 * 0x4);
+//	DWORD dwEntityClientClass = *(DWORD*)(dwGetClientClassFn + 1);
+//	return *(int*)(dwEntityClientClass + 20);
+//}
+//
+//int get_class_id(uintptr_t entity)
+//{
+//	uintptr_t vtable = *(uintptr_t*)(entity + 0x8); // IClientNetworkable
+//	uintptr_t fn = *(uintptr_t*)(vtable + 0x8); // 4 bytes per fn, 2nd index
+//	uintptr_t ptr = *(uintptr_t*)(fn + 0x1); // mov eax, ptr_to_client_class
+//	return *(int*)(ptr + 0x14);
+//}
 
 Player* GetClosestEnemy()
 {
@@ -105,6 +204,8 @@ Player* GetClosestCrosshairEnemy(int bonepos, Vector3& targetPos, float& FOV)
 			continue;
 		}
 
+		//hier
+
 		auto position = currentPlayer->GetBonePos(bonepos);
 		float currentDistance = localPlayer->fovTo(position);
 		if (currentDistance < closestDitance && currentDistance < setFOV)
@@ -135,8 +236,8 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 	int* iShotsFired = (int*)(localPlayer + offsets::m_iShotsFired);
 	Vec3* aimPunchAngle = (Vec3*)(localPlayer + offsets::m_aimPunchAngle);
 
-	CreateInterface = (tCreateInterface)GetProcAddress((HMODULE)hack->engine, "CreateInterface");
-	IEngineTrace* EngineTrace = (IEngineTrace*)GetInterface(CreateInterface, "EngineTraceClient004");
+	//CreateInterface = (tCreateInterface)GetProcAddress((HMODULE)hack->engine, "CreateInterface");
+	//IEngineTrace* EngineTrace = (IEngineTrace*)GetInterface(CreateInterface, "EngineTraceClient004");
 
 	// drawing stuff
 
@@ -188,6 +289,8 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 	//Watermark
 	draw_text("-- DeeGee Negerhook --", windowWidth / 2, windowHeight - 20, D3DCOLOR_ARGB(255, 255, 255, 255));
+	currentWeaponIsSniper();
+
 
 	for (int i = 1; i < 32; i++) 
 	{
@@ -211,33 +314,14 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 				uintptr_t entity = *entityPtr;
 				int entityTeam = *(int*)(entity + offsets::m_iTeamNum);
 				uintptr_t localPlayer = *localEntPtr;
-				int glowManager = *(int*)(hack->client + offsets::dwGlowObjectManager);
 				int playerTeam = *(int*)(localPlayer + offsets::m_iTeamNum);
 
 				// if in diffrent team
 				if (playerTeam != entityTeam)
 				{
-					vec3 eyepos;
-					eyepos.x = LocalPlayer::Get()->GetOrigin()->x + LocalPlayer::Get()->GetViewOffset()->x;
-					eyepos.y = LocalPlayer::Get()->GetOrigin()->y + LocalPlayer::Get()->GetViewOffset()->y;
-					eyepos.z = LocalPlayer::Get()->GetOrigin()->z + LocalPlayer::Get()->GetViewOffset()->z;
-					//vec3 targeteyepos = curEnt->m_vecOrigin + curEnt->m_vecViewOffset;
+					int visable = Vischeck(curEnt);
 
-					vec3 bonePos; //head
-					bonePos.x = *(float*)(curEnt->boneMatrix + 0x30 * 8 + 0x0C);
-					bonePos.y = *(float*)(curEnt->boneMatrix + 0x30 * 8 + 0x1C);
-					bonePos.z = *(float*)(curEnt->boneMatrix + 0x30 * 8 + 0x2C);
-
-					CGameTrace trace;
-					Ray_t ray;
-					CTraceFilter tracefilter;
-					tracefilter.pSkip = (void*)LocalPlayer::Get();
-
-					ray.Init(eyepos, bonePos);
-
-					EngineTrace->TraceRay(ray, MASK_SHOT | CONTENTS_GRATE, &tracefilter, &trace);
-
-					if (curEnt == trace.hit_entity)
+					if (visable == 1)
 					{
 						//std::cout << "Ent 0x" << std::hex << currEnt.ent << " is visible\n";
 						//char dbg_buffvis[100];
@@ -289,20 +373,52 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 					if (textesp)
 					{
-						std::stringstream s1, s2;
+						std::stringstream s1, s2, s3;
 						s1 << curEnt->iHealth;
 						s2 << curEnt->ArmorValue;
+
 						std::string t1 = "Health: " + s1.str();
 						std::string t2 = "Armor: " + s2.str();
+						std::string t3 = "Weapon: " + s3.str();
+
 						char* healthMsg = (char*)t1.c_str();
 						char* armorMsg = (char*)t2.c_str();
 
 						draw_text(healthMsg, entPos2D.x, entPos2D.y, D3DCOLOR_ARGB(255, 255, 255, 255));
 						draw_text(armorMsg, entPos2D.x, entPos2D.y + 12, D3DCOLOR_ARGB(255, 255, 255, 255));
-
-						if (!curEnt->bHasHelmet)
-							draw_text("No Helmet", entPos2D.x, entPos2D.y + 24, D3DCOLOR_ARGB(255, 255, 255, 255));
 					}
+
+					//if (true)
+					//{
+					//	int TotalHits = *(int*)(localEntPtr + offsets::hits_on_server);
+					//	int last_hit_count = *(int*)(localEntPtr + offsets::hits_on_server);
+
+					//	int hits = 0;
+					//	int cx = windowWidth / 2;
+					//	int cy = windowHeight / 2;
+
+					//	if (hitmarker)
+					//	{
+					//		auto delta = util::time::now() - hit_time;
+					//		if (delta > util::time::from_milliseconds(5000))
+					//			hitmarker = false;
+					//	}
+
+					//	if (TotalHits != last_hit_count && TotalHits != 0 && LocalPlayer::Get()->GetHealth() > 0)
+					//	{
+					//		hit_time = util::time::now();
+					//		hitmarker = true;
+
+					//		if (hitmarker)
+					//		{
+					//			draw_line(cx - 5, cy - 5, cx - 15, cy - 15, 1, D3DCOLOR_ARGB(255, 255, 255, 255));
+					//			draw_line(cx + 5, cy + 5, cx + 15, cy + 15, 1, D3DCOLOR_ARGB(255, 255, 255, 255));
+					//			draw_line(cx - 5, cy + 5, cx - 15, cy + 15, 1, D3DCOLOR_ARGB(255, 255, 255, 255));
+					//			draw_line(cx + 5, cy - 5, cx + 15, cy - 15, 1, D3DCOLOR_ARGB(255, 255, 255, 255));
+					//		}
+					//		last_hit_count = TotalHits;
+					//	}
+					//}
 				}
 			}
 		}
@@ -316,7 +432,16 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 			Vector3 targetPos;
 			float FOV;
-			Player* closestEnemy = GetClosestCrosshairEnemy(8, targetPos, FOV);
+			Player* closestEnemy;
+
+			if (currentWeaponIsSniper())
+			{
+				closestEnemy = GetClosestCrosshairEnemy(5, targetPos, FOV);
+			}
+			else
+			{
+				closestEnemy = GetClosestCrosshairEnemy(8, targetPos, FOV);
+			}
 
 			if (closestEnemy)
 			{
@@ -327,37 +452,19 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 				targetPos3.y = targetPos.y;
 				targetPos3.z = targetPos.z;
 
-				/*if (hack->WorldToScreen(targetPos3, pos2D))
+				if (hack->WorldToScreen(targetPos3, pos2D))
 				{
-					draw_text(dbg_txt, pos2D.x, pos2D.y, D3DCOLOR_ARGB(255, 255, 255, 255));
-				}*/
+					draw_text("X", pos2D.x, pos2D.y - 6, D3DCOLOR_ARGB(255, 255, 255, 255));
+				}
 
 				if (GetAsyncKeyState(VK_LBUTTON) & 0x8000)
 				{
 					//LocalPlayer::Get()->AimAt(closestEnemy->GetBonePos(8));
-					//Sleep(1);
 					LocalPlayer::Get()->setViewAngle(&targetPos, aimSpeed, true);
 				}
 			}
 		}
 	}
-
-	//if (rcs)
-	//{
-	//	Vec3 punchAngle = *aimPunchAngle * 2;
-	//	if (*iShotsFired > 1) {
-	//		// calc rcs
-	//		Vec3 newAngle = *viewAngles + oPunch - punchAngle;
-	//		// normalize
-	//		newAngle.Normalize();
-	//		// set
-
-	//		*viewAngles = newAngle;
-	//	}
-	//	// fix
-	//	oPunch = punchAngle;
-	//}
-
 
 	// crosshair
 	//static crosshair
@@ -382,6 +489,43 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 		draw_line(t, b, 2, D3DCOLOR_ARGB(255, 255, 255, 255));
 	}
 
+	////item esp test
+	////crash
+	//if (true)
+	//{
+	//	int GlowObjectCount = *(int*)(hack->client + offsets::m_iGlowIndex + 0x4);
+
+	//	for (short int i = 0; i < GlowObjectCount; i++)
+	//	{
+	//		DWORD entity = *(DWORD*)(hack->client + offsets::dwEntityList + i * 0x10);
+	//		Vec3 entityLocation = *(Vec3*)(entity + offsets::m_vecOrigin);
+	//		Vec2 vScreen;
+	//		auto color = D3DCOLOR_ARGB(255, 255, 255, 255);
+
+	//		if (entity != NULL)
+	//		{
+	//			if (entity != localPlayer)
+	//			{
+	//				if (hack->WorldToScreen(entityLocation, vScreen))
+	//				{
+	//					if (GetClassID(entity) == (int)Items::CChicken)
+	//					{
+	//						draw_text("Chicken", vScreen.x, vScreen.y, color);
+	//					}
+	//					if (GetClassID(entity) == (int)Items::CWeaponGlock)
+	//					{
+	//						draw_text("Glock", vScreen.x, vScreen.y, color);
+	//					}
+	//					if (GetClassID(entity) == (int)Items::CAK47)
+	//					{
+	//						draw_text("AK47", vScreen.x, vScreen.y, color);
+	//					}
+	//				}
+	//			}
+	//		}
+	//	}
+	//}
+
 	// call og function
 	oEndScene(pDevice);
 }
@@ -398,20 +542,7 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	hack = new Hack();
 	hack->Init();
 
-	////tracedata
-	//CreateInterface = (tCreateInterface)GetProcAddress((HMODULE)hack->engine, "CreateInterface");
-	//IEngineTrace* EngineTrace = (IEngineTrace*)GetInterface(CreateInterface, "EngineTraceClient004");
-
 	Vec3 oPunch{ 0,0,0 };
-	//---DATA---
-	//rcs v2.0 data
-	uintptr_t localPlayer = *(uintptr_t*)(hack->client + offsets::dwLocalPlayer);
-	Vec3* viewAngles = (Vec3*)(*(uintptr_t*)(hack->engine + offsets::dwClientState) + offsets::dwClientState_ViewAngles);
-	int* iShotsFired = (int*)(localPlayer + offsets::m_iShotsFired);
-	Vec3* aimPunchAngle = (Vec3*)(localPlayer + offsets::m_aimPunchAngle);
-
-	//triggerbot data
-	//uintptr_t* localEntPtr = (uintptr_t*)(hack->client + offsets::dwLocalPlayer);
 
 	// hack loop
 	while (!GetAsyncKeyState(VK_END))
@@ -476,20 +607,21 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 
 		hack->Update();
 
-		if (rcs)
-		{
-			Vec3 punchAngle = *aimPunchAngle * 2;
-			if (*iShotsFired > 1) {
-			// calc rcs
-			Vec3 newAngle = *viewAngles + oPunch - punchAngle;
-			// normalize
-			newAngle.Normalize();
-			// set
+		if (rcs) {
+			uintptr_t localPlayer = *(uintptr_t*)(hack->client + offsets::dwLocalPlayer);
+			Vec3* viewAngles = (Vec3*)(*(uintptr_t*)(hack->engine + offsets::dwClientState) + offsets::dwClientState_ViewAngles);
+			int* iShotsFired = (int*)(localPlayer + offsets::m_iShotsFired);
+			Vec3* aimPunchAngle = (Vec3*)(localPlayer + offsets::m_aimPunchAngle);
 
-			*viewAngles = newAngle;
-		}
-		// fix
-		oPunch = punchAngle;
+			Vec3 punchAngle = *aimPunchAngle * 2;
+
+			if (*iShotsFired > 1) {
+				Vec3 newAngle = *viewAngles + oPunch - punchAngle;
+				newAngle.Normalize();
+				*viewAngles = newAngle;
+			}
+
+			oPunch = punchAngle;
 		}
 
 		// crosshairrecoil
@@ -505,7 +637,7 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 				int glowManager = *(int*)(hack->client + offsets::dwGlowObjectManager);
 				int playerTeam = *(int*)(localPlayer + offsets::m_iTeamNum);
 
-				for (int i = 1; i < 32; i++)
+				for (int i = 1; i < 64; i++)
 				{
 					Ent* curEnt = hack->entList->ents[i].ent;
 					if (!hack->CheckValidEnt(curEnt))
@@ -532,7 +664,6 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 						}
 					}
 				}
-
 			}
 		}
 
@@ -617,7 +748,6 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 				*(int*)(localPlayer + offsets::m_iFOV) = customFOV;
 			}
 		}
-
 	}
 
 	// unhook

@@ -24,5 +24,6 @@
 #include "localplayer.h"
 #include "csgotrace.h"
 #include "csgoVector.h"
+#include "classID.h"
 
 extern Hack* hack;
