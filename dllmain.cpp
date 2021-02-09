@@ -41,7 +41,7 @@ void* GetInterface(tCreateInterface fn, const char* name)
 tTraceRay TraceRay;
 tCreateInterface CreateInterface;
 
-bool currentWeaponIsSniper()
+int currentWeaponAimbotSetting()
 {
 	uintptr_t* localEntPtr = (uintptr_t*)(hack->client + offsets::dwLocalPlayer);
 	uintptr_t localEnt = *localEntPtr;
@@ -58,19 +58,46 @@ bool currentWeaponIsSniper()
 		sprintf_s<100>(dbg_buffweapon, "WeaponID %i", myWeapon);
 		draw_text(dbg_buffweapon, mennuOffX, menuOffY + 300, D3DCOLOR_ARGB(255, 255, 255, 255));
 
+		//snipes
 		if(myWeapon == 9)
-			return true;
+			return 1;
 
 		if (myWeapon == 40)
-			return true;
+			return 1;
 
 		if (myWeapon == 38)
-			return true;
+			return 1;
 
 		if (myWeapon == 11)
-			return true;
+			return 1;
+
+		//nades & knive
+		if (myWeapon == 42)
+			return 2;
+
+		if (myWeapon == 43)
+			return 2;
+
+		if (myWeapon == 44)
+			return 2;
+
+		if (myWeapon == 45)
+			return 2;
+
+		if (myWeapon == 46)
+			return 2;
+
+		if (myWeapon == 47)
+			return 2;
+
+		if (myWeapon == 48)
+			return 2;
+
+		if (myWeapon == 59)
+			return 2;
+
 	}
-	return false;
+	return 0;
 }
 
 int Vischeck(Ent* curEnt)
@@ -290,8 +317,6 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 	//Watermark
 	draw_text("-- DeeGee Negerhook --", windowWidth / 2, windowHeight - 20, D3DCOLOR_ARGB(255, 255, 255, 255));
-	currentWeaponIsSniper();
-
 
 	for (int i = 1; i < 32; i++) 
 	{
@@ -453,17 +478,23 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 			Vector3 targetPos;
 			float FOV;
 			Player* closestEnemy;
+			bool stop = true;
 
-			if (currentWeaponIsSniper())
+			if (currentWeaponAimbotSetting() == 1)
 			{
 				closestEnemy = GetClosestCrosshairEnemy(5, targetPos, FOV);
+			}
+			else if(currentWeaponAimbotSetting() == 2)
+			{
+				stop = false;
+				closestEnemy = GetClosestCrosshairEnemy(8, targetPos, FOV);
 			}
 			else
 			{
 				closestEnemy = GetClosestCrosshairEnemy(8, targetPos, FOV);
 			}
 
-			if (closestEnemy)
+			if (closestEnemy && stop)
 			{
 
 				Vec2 pos2D;
