@@ -122,6 +122,7 @@ std::string get_weapon_name(int id)
 	return "unknown";
 }
 
+
 //int GetClassID(DWORD Entity) //Creates our class ID for the entity we put inside
 //{
 //	DWORD dwClientNetworkable = *(DWORD*)(Entity + 0x8);
@@ -371,6 +372,23 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 						draw_line(topArmor.x + 1.5f, topArmor.y, topArmor.x + 1.5f, botArmor.y, 1, D3DCOLOR_ARGB(255, 0, 0, 0));
 					}
 
+					if (true)
+					{
+						Vec3 head3D = hack->GetBonePos(curEnt, 8);
+						Vec3 entAngles;
+						entAngles.x = curEnt->angEyeAnglesX;
+						entAngles.y = curEnt->angEyeAnglesY;
+						entAngles.z = 0;
+						Vec3 endPoint = hack->TransformVec(head3D, entAngles, 60);
+						Vec2 endPoint2D, head2D;
+						hack->WorldToScreen(head3D, head2D);
+
+						if (hack->WorldToScreen(endPoint, endPoint2D))
+						{
+							draw_line(head2D, endPoint2D, 1, color);
+						}
+					}
+
 					if (textesp)
 					{
 						std::stringstream s1, s2, s3;
@@ -379,13 +397,15 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 						std::string t1 = "Health: " + s1.str();
 						std::string t2 = "Armor: " + s2.str();
-						std::string t3 = "Weapon: " + s3.str();
 
 						char* healthMsg = (char*)t1.c_str();
 						char* armorMsg = (char*)t2.c_str();
 
 						draw_text(healthMsg, entPos2D.x, entPos2D.y, D3DCOLOR_ARGB(255, 255, 255, 255));
 						draw_text(armorMsg, entPos2D.x, entPos2D.y + 12, D3DCOLOR_ARGB(255, 255, 255, 255));
+
+						if (!curEnt->bHasHelmet)
+							draw_text("No Helmet", entPos2D.x, entPos2D.y + 24, D3DCOLOR_ARGB(255, 255, 255, 255));
 					}
 
 					//if (true)
@@ -637,7 +657,7 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 				int glowManager = *(int*)(hack->client + offsets::dwGlowObjectManager);
 				int playerTeam = *(int*)(localPlayer + offsets::m_iTeamNum);
 
-				for (int i = 1; i < 64; i++)
+				for (int i = 1; i < 32; i++)
 				{
 					Ent* curEnt = hack->entList->ents[i].ent;
 					if (!hack->CheckValidEnt(curEnt))

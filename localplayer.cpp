@@ -13,7 +13,6 @@ Vector3* LocalPlayer::GetOrigin()
 	return (Vector3*)(*(uintptr_t*)this + offsets::m_vecOrigin);
 }
 
-
 Vector3* LocalPlayer::GetViewOffset()
 {
 
@@ -278,7 +277,7 @@ Vector3 LocalPlayer::setViewAngle(Vector3* target, int aimSpeed, bool rcsActive)
 		}
 		else
 		{
-			OutputDebugStringA("ALAAAAAAARM!!");
+			//OutputDebugStringA("ALAAAAAAARM!!");
 		}
 		return *viewAngles;
 	}

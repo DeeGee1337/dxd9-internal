@@ -90,7 +90,11 @@ public:
 		//// m_lifeState
 		//DEFINE_MEMBER_N(char, m_lifeState, offsets::m_lifeState);
 
-		DEFINE_MEMBER_N(bool, bHasHelmet, 0x1839);
+		DEFINE_MEMBER_N(float, angEyeAnglesX, offsets::m_angEyeAnglesX);
+
+		DEFINE_MEMBER_N(float, angEyeAnglesY, offsets::m_angEyeAnglesY);
+
+		DEFINE_MEMBER_N(bool, bHasHelmet, offsets::m_bHasHelmet);
 	};
 };
 
@@ -130,6 +134,7 @@ public:
 	bool CheckValidEnt(Ent* ent);
 	bool WorldToScreen(Vec3 pos, Vec2& screen);
 	Vec3 GetBonePos(Ent* ent, int bone);
+	Vec3 TransformVec(Vec3 src, Vec3 ang, float d);
 
 	////aimbot
 	//bool IsValidTarget(Ent* localPlayer, Ent* ent);
