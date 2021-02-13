@@ -46,7 +46,7 @@ namespace offsets
 	constexpr ptrdiff_t dwViewMatrix = 0x4D94844;
 	constexpr ptrdiff_t dwWeaponTable = 0x51F4FE8;
 	constexpr ptrdiff_t dwWeaponTableIndex = 0x325C;
-	constexpr ptrdiff_t dwYawPtr = 0xD0700002;
+	constexpr ptrdiff_t dwYawPtr = 0xCD2E0002;
 	constexpr ptrdiff_t dwZoomSensitivityRatioPtr = 0xD95D60;
 	constexpr ptrdiff_t dwbSendPackets = 0xD73EA;
 	constexpr ptrdiff_t dwppDirect3DDevice9 = 0xA7050;
@@ -63,7 +63,7 @@ namespace offsets
 	constexpr ptrdiff_t force_update_spectator_glow = 0x3AD962;
 	constexpr ptrdiff_t anim_overlays = 0x2980;
 	constexpr ptrdiff_t m_flSpawnTime = 0xA370;
-	constexpr ptrdiff_t find_hud_element = 0x2FBBE320;
+	constexpr ptrdiff_t find_hud_element = 0x32FDE320;
 
 	//netvars
 
