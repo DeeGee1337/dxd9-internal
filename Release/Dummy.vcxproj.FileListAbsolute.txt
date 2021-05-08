@@ -1,2 +1,3 @@
 C:\Users\Anon\Downloads\d3d9 esp1z1 esp video 2 -snaplines\d3d9 esp1z1 esp video 2 - snaplines\Dummy\Release\Dummy.dll
 C:\Users\Anon\Documents\GitHub\dxd9 internal\Release\dxd9 internal.dll
+C:\Users\Anon\Documents\GitHub\dxd9-internal\Release\dxd9 internal.dll

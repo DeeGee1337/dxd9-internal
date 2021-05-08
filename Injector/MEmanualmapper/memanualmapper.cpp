@@ -18,7 +18,7 @@ printf("Credits GH\n");
 printf("\n");
 
 	mapper->setup("csgo.exe", "csgo.exe");
-	mapper->load_dll("C:\\Users\\Anon\\Documents\\GitHub\\dxd9 internal\\Release\\dxd9 internal.dll");
+	mapper->load_dll("C:\\Users\\Anon\\Documents\\GitHub\\dxd9-internal\\Release\\dxd9 internal.dll");
 	mapper->inject_dll();
 	system("pause");
 }
