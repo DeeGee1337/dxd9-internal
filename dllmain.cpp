@@ -595,15 +595,20 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 
 	Vec3 oPunch{ 0,0,0 };
 
+	
+
 	// hack loop
 	while (!GetAsyncKeyState(VK_END))
 	{
+		
 		//triggerbot data
 		uintptr_t* localEntPtr = (uintptr_t*)(hack->client + offsets::dwLocalPlayer);
 		
 		//maybe crash -> ingame check needed
 		/*if (*reinterpret_cast<int*>(*reinterpret_cast<uintptr_t*>(hack->engine + offsets::dwClientState) + offsets::dwClientState_State) != 6)
 			continue;*/
+
+			
 
 		if (GetAsyncKeyState(VK_INSERT) & 1)
 			show_menu = !show_menu;
@@ -658,6 +663,7 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 
 		hack->Update();
 
+		
 		if (rcs) {
 			uintptr_t localPlayer = *(uintptr_t*)(hack->client + offsets::dwLocalPlayer);
 			Vec3* viewAngles = (Vec3*)(*(uintptr_t*)(hack->engine + offsets::dwClientState) + offsets::dwClientState_ViewAngles);
@@ -679,6 +685,8 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 		Vec3 pAng = hack->localEnt->aimPunchAngle;
 		hack->crosshair2D.x = windowWidth / 2 - (windowWidth / 90 * pAng.y);
 		hack->crosshair2D.y = windowHeight / 2 + (windowHeight / 90 * pAng.x);
+
+		
 
 		if (glow)
 		{
@@ -708,10 +716,12 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 							int R = 255.f - G;
 
 							int entityGlowIdx = *(int*)(entity + offsets::m_iGlowIndex);
-							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x4) = R; //red
-							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x8) = G; //green
-							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x10) = 1.f; //alpha
-							*(int*)(glowManager + entityGlowIdx * 0x38 + 0x24) = 1; //enable
+							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x8) = R; //red
+							*(float*)(glowManager + entityGlowIdx * 0x38 + 0xC) = G; //green
+							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x10) = 0.f; //blue
+							*(float*)(glowManager + entityGlowIdx * 0x38 + 0x14) = 1.f; //alpha
+
+							*(int*)(glowManager + entityGlowIdx * 0x38 + 0x28) = 1; //enable
 						}
 					}
 				}
