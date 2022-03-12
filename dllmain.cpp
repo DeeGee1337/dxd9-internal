@@ -20,6 +20,7 @@ bool hitmarker = false;
 // data
 int aimSpeed = 30;
 float setFOV = 1.0f;
+float setRCS = 2.0f;
 int customFOV = 110;
 time_t hit_time;
 void* d3d9Device[119];
@@ -292,7 +293,10 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 		sprintf_s<100>(dbg_buff2, "FOV %0.2f", setFOV);
 
 		char dbg_buff3[100];
-		sprintf_s<100>(dbg_buff3, "FOV CHANGER %i", customFOV);
+		sprintf_s<100>(dbg_buff3, "RCS %0.2f", setRCS);
+
+		char dbg_buff4[100];
+		sprintf_s<100>(dbg_buff4, "FOV CHANGER %i", customFOV);
 		
 		draw_text("_         ",  mennuOffX, menuOffY - 5 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
 		draw_text(">(.)__      ",  mennuOffX, menuOffY - 4 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
@@ -311,8 +315,9 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 		draw_text("-------------", mennuOffX, menuOffY + 10 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
 		draw_text(dbg_buff, mennuOffX, menuOffY + 11 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
 		draw_text(dbg_buff2, mennuOffX, menuOffY + 12 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
-		draw_text("-------------", mennuOffX, menuOffY + 13 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
-		draw_text(dbg_buff3, mennuOffX, menuOffY + 14 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
+		draw_text(dbg_buff3, mennuOffX, menuOffY + 13 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
+		draw_text("-------------", mennuOffX, menuOffY + 14 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
+		draw_text(dbg_buff4, mennuOffX, menuOffY + 15 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
 	}
 
 	//Watermark
@@ -496,7 +501,6 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 			if (closestEnemy && stop)
 			{
-
 				Vec2 pos2D;
 				Vec3 targetPos3;
 				targetPos3.x = targetPos.x;
@@ -644,10 +648,22 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 			customFOVtoggle = !customFOVtoggle;
 
 		if (GetAsyncKeyState(VK_ADD) & 1)
-			customFOV++;
+		{
+			//customFOV++;
+			if (setRCS >= 2.0f)
+				setRCS = 2.0f;
+			else
+				setRCS = setRCS + 0.1f;
+		}
 
 		if (GetAsyncKeyState(VK_SUBTRACT) & 1)
-			customFOV--;
+		{
+			//customFOV--;
+			if (setRCS <= 0.0f)
+				setRCS = 0.0f;
+			else
+				setRCS = setRCS - 0.1f;
+		}
 
 		if (GetAsyncKeyState(VK_UP) & 1)
 			aimSpeed++;
@@ -664,21 +680,61 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 		hack->Update();
 
 		
-		if (rcs) {
+		if (rcs) 
+		{
 			uintptr_t localPlayer = *(uintptr_t*)(hack->client + offsets::dwLocalPlayer);
 			Vec3* viewAngles = (Vec3*)(*(uintptr_t*)(hack->engine + offsets::dwClientState) + offsets::dwClientState_ViewAngles);
-			int* iShotsFired = (int*)(localPlayer + offsets::m_iShotsFired);
-			Vec3* aimPunchAngle = (Vec3*)(localPlayer + offsets::m_aimPunchAngle);
+			int iShotsFired = *(int*)(localPlayer + offsets::m_iShotsFired);
+			Vec3 tempAngle = { 0,0,0 };
+			Vec3 aimPunchAngle = *(Vec3*)(localPlayer + offsets::m_aimPunchAngle);
 
-			Vec3 punchAngle = *aimPunchAngle * 2;
+			if (iShotsFired > 1 && GetAsyncKeyState(VK_LBUTTON))
+			{
+				tempAngle.x = (viewAngles->x + oPunch.x) - (aimPunchAngle.x * setRCS);
+				tempAngle.y = (viewAngles->y + oPunch.y) - (aimPunchAngle.y * setRCS);
 
-			if (*iShotsFired > 1) {
+				while (tempAngle.y > 180)
+					tempAngle.y -= 360;
+
+				while (tempAngle.y < -180)
+					tempAngle.y += 360;
+
+				if (tempAngle.x > 89.0f)
+					tempAngle.x = 89.0f;
+
+				if (tempAngle.x < -89.0f)
+					tempAngle.x = -89.0f;
+
+				oPunch.x = aimPunchAngle.x * setRCS;
+				oPunch.y = aimPunchAngle.y * setRCS;
+
+				*viewAngles = tempAngle;
+			}
+			else
+			{
+				oPunch.x = 0;
+				oPunch.y = 0;
+			}
+
+
+
+			/*
+
+			Vec3 punchAngle = aimPunchAngle * 2;
+
+			if (iShotsFired > 1) 
+			{
 				Vec3 newAngle = *viewAngles + oPunch - punchAngle;
 				newAngle.Normalize();
 				*viewAngles = newAngle;
 			}
 
 			oPunch = punchAngle;
+
+			*/
+
+			//////////////////////////
+			
 		}
 
 		// crosshairrecoil
