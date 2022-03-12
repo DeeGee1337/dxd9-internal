@@ -279,6 +279,8 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 	if (show_menu)
 	{
+		//draw_fill_rect_transparent(mennuOffX - 76, menuOffY - 1, 152, 17, D3DCOLOR_ARGB(40, 127, 127, 127));
+		draw_fill_rect_transparent(mennuOffX - 75, menuOffY, 150, 15, D3DCOLOR_ARGB(40, 0, 0, 0));
 		draw_text("Open Menu (Insert)", mennuOffX, menuOffY, D3DCOLOR_ARGB(255, 255, 255, 255));
 	}
 	else
@@ -297,6 +299,9 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 
 		char dbg_buff4[100];
 		sprintf_s<100>(dbg_buff4, "FOV CHANGER %i", customFOV);
+
+		//draw_fill_rect_transparent(mennuOffX - 76, menuOffY - 5 * 12 - 1, 152, 262, D3DCOLOR_ARGB(40, 127, 127, 127));
+		draw_fill_rect_transparent(mennuOffX - 75, menuOffY - 5 * 12, 150, 260, D3DCOLOR_ARGB(40, 0, 0, 0));
 		
 		draw_text("_         ",  mennuOffX, menuOffY - 5 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
 		draw_text(">(.)__      ",  mennuOffX, menuOffY - 4 * 12, D3DCOLOR_ARGB(255, 255, 255, 255));
@@ -741,8 +746,6 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 		Vec3 pAng = hack->localEnt->aimPunchAngle;
 		hack->crosshair2D.x = windowWidth / 2 - (windowWidth / 90 * pAng.y);
 		hack->crosshair2D.y = windowHeight / 2 + (windowHeight / 90 * pAng.x);
-
-		
 
 		if (glow)
 		{

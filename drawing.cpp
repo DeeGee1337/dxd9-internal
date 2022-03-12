@@ -9,6 +9,23 @@ void draw_fill_rect(int x, int y, int w, int h, D3DCOLOR color) {
 	pDevice->Clear(1, &rect, D3DCLEAR_TARGET, color, 0, 0);
 }
 
+void draw_fill_rect_transparent(int x, int y, int w, int h, D3DCOLOR color) {
+	//D3DRECT rect = { x,y,x + w,y + h };
+	
+	if (!hack->LineL)
+		D3DXCreateLine(pDevice, &hack->LineL);
+
+	D3DXVECTOR2 DotPosition[2];
+
+	DotPosition[0] = D3DXVECTOR2(x + w / 2, y);
+	DotPosition[1] = D3DXVECTOR2(x + w / 2, y + h);
+
+	hack->LineL->SetAntialias(false);
+	hack->LineL->SetWidth(w);
+	hack->LineL->Draw(DotPosition, 2, color);
+	
+}
+
 void draw_line(int x1, int y1, int x2, int y2, int thickness, D3DCOLOR color) {
 
 	if (!hack->LineL)
