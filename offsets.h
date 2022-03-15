@@ -8,6 +8,7 @@ namespace offsets
 	//signatures
 
 	//	constexpr ptrdiff_t m_iFOV = 0x31E4; -> constexpr ptrdiff_t m_iDefaultFOV = 0x333C; ??
+	//constexpr ptrdiff_t m_iFOV = 0x31F4;
 
 	constexpr ptrdiff_t anim_overlays = 0x2990;
 	constexpr ptrdiff_t clientstate_choked_commands = 0x4D30;
@@ -52,9 +53,9 @@ namespace offsets
 	constexpr ptrdiff_t dwWeaponTableIndex = 0x326C;
 	constexpr ptrdiff_t dwYawPtr = 0xDB8F48;
 	constexpr ptrdiff_t dwZoomSensitivityRatioPtr = 0xDBF1B0;
-	constexpr ptrdiff_t dwbSendPackets = 0xD9542;
+	constexpr ptrdiff_t dwbSendPackets = 0xD9572;
 	constexpr ptrdiff_t dwppDirect3DDevice9 = 0xA5050;
-	constexpr ptrdiff_t find_hud_element = 0x5B4650F0;
+	constexpr ptrdiff_t find_hud_element = 0x2E1650F0;
 	constexpr ptrdiff_t force_update_spectator_glow = 0x3BB80A;
 	constexpr ptrdiff_t interface_engine_cvar = 0x3E9EC;
 	constexpr ptrdiff_t is_c4_owner = 0x3C8890;

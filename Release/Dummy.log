@@ -144,9 +144,24 @@ C:\Users\Fabian\Documents\GitHub\dxd9-internal\drawing.cpp(101,26): warning C424
 C:\Users\Fabian\Documents\GitHub\dxd9-internal\drawing.cpp(101,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Fabian\Documents\GitHub\dxd9-internal\drawing.cpp(101,20): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Fabian\Documents\GitHub\dxd9-internal\drawing.cpp(101,17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  dx.cpp
+  hack.cpp
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\hack.cpp(62,27): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\hack.cpp(63,27): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\hack.cpp(64,27): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  hook.cpp
+  localplayer.cpp
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\localplayer.cpp(54,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\localplayer.cpp(55,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\localplayer.cpp(102,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\localplayer.cpp(103,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\localplayer.cpp(154,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\localplayer.cpp(251,27): warning C4305: '*=': truncation from 'double' to 'float'
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\localplayer.cpp(252,27): warning C4305: '*=': truncation from 'double' to 'float'
+  player.cpp
   Generating code
-  2 of 208 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
+  0 of 208 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Dummy.vcxproj -> C:\Users\Fabian\Documents\GitHub\dxd9-internal\Release\dxd9 internal.dll
