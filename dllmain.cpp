@@ -590,21 +590,26 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 	oEndScene(pDevice);
 }
 
-DWORD WINAPI HackThread(HMODULE hModule) {
+DWORD WINAPI HackThread(HMODULE hModule) 
+{
+	//Create Console
+	AllocConsole();
+	FILE* f;
+	freopen_s(&f, "CONOUT$", "w", stdout);
+	std::cout << "-- DeeGee dxd9 injected! --" << std::endl;
+	std::cout << "[DEBUG] Console Allocated" << std::endl;
+
 
 	// hook
-	if (GetD3D9Device(d3d9Device, sizeof(d3d9Device))) {
+	if (GetD3D9Device(d3d9Device, sizeof(d3d9Device))) 
+	{
 		memcpy(EndSceneBytes, (char*)d3d9Device[42], 7);
-
 		oEndScene = (tEndScene)TrampHook((char*)d3d9Device[42], (char*)hkEndScene, 7);
 	}
 
 	hack = new Hack();
 	hack->Init();
-
 	Vec3 oPunch{ 0,0,0 };
-
-	
 
 	// hack loop
 	while (!GetAsyncKeyState(VK_END))
@@ -877,7 +882,8 @@ DWORD WINAPI HackThread(HMODULE hModule) {
 	FreeLibraryAndExitThread(hModule, 0);
 }
 
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpr) {
+BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpr) 
+{
 	if (reason == DLL_PROCESS_ATTACH)
 		CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)HackThread, hModule, 0, 0));
 	return TRUE;

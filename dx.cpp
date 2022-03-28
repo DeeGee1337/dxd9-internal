@@ -4,7 +4,8 @@
 int windowHeight, windowWidth;
 
 // callback to be called for each toplevel window
-BOOL CALLBACK enumWind(HWND handle, LPARAM lp) {
+BOOL CALLBACK enumWind(HWND handle, LPARAM lp) 
+{
 	DWORD procId;
 	GetWindowThreadProcessId(handle, &procId);
 	if (GetCurrentProcessId() != procId)
@@ -15,9 +16,9 @@ BOOL CALLBACK enumWind(HWND handle, LPARAM lp) {
 }
 
 // get process window
-HWND GetProcessWindow() {
+HWND GetProcessWindow() 
+{
 	window = NULL;
-
 	EnumWindows(enumWind, NULL);
 
 	RECT size;
@@ -33,11 +34,14 @@ HWND GetProcessWindow() {
 	//windowHeight -= 29; //2k offsets
 	//windowWidth -= 5;   //2k offsets
 
+	std::cout << "[DEBUG] Window High: " << windowWidth << "| windowHeight: " << windowHeight << std::endl;
+
 	return window;
 }
 
 // get get vTable 
-bool GetD3D9Device(void** pTable, size_t size) {
+bool GetD3D9Device(void** pTable, size_t size) 
+{
 	if (!pTable)
 		return false;
 
