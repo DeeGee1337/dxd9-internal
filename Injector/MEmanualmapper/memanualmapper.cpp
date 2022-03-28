@@ -1,6 +1,7 @@
 #include "globals.h"
 
-int main() {
+int main() 
+{
 	ManualMapper* mapper = new ManualMapper();
 
 printf("\n");
@@ -16,6 +17,13 @@ printf("Injector with Manualmapping Beta\n");
 printf("CSGO Internal\n");
 printf("Credits GH\n");
 printf("\n");
+
+printf("[DEBUG] Last CSGO Update: 16.03.2022 \n");
+
+char url[1000] = "https://steamdb.info/app/730/";
+std::string op = std::string("start ").append(url);
+system(op.c_str());
+printf("[DEBUG] STEAMDB opened \n");
 
 	mapper->setup("csgo.exe", "csgo.exe");
 	//mapper->load_dll("C:\\Users\\Anon\\Documents\\GitHub\\dxd9-internal\\Release\\dxd9 internal.dll");
