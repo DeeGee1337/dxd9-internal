@@ -1,85 +1,8 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Preview\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(510,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (Dummy.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  dllmain.cpp
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(60,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(60,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(284,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(284,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(306,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(306,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(307,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(307,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(308,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(308,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(310,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(310,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(311,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(311,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(312,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(312,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(313,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(313,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(314,51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(314,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(315,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(315,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(316,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(316,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(317,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(317,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(318,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(318,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(319,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(319,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(320,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(320,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(321,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(321,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(322,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(322,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(323,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(323,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(324,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(324,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(325,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(325,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(329,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(329,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(379,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(380,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(386,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(387,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(400,79): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(400,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(400,46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(400,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(401,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(401,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(401,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(401,26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(402,79): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(402,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(402,46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(402,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(405,75): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(405,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(405,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(405,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(406,61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(406,49): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(406,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(406,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(407,75): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(407,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(407,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(407,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(779,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(780,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(783,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\dllmain.cpp(784,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  dx.cpp
   Generating code
-  6 of 215 functions ( 2.8%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    8 functions had inline decision re-evaluated but remain unchanged
+C:\Users\Fabian\Documents\GitHub\dxd9-internal\localplayer.cpp(284): warning C4715: 'LocalPlayer::setViewAngle': not all control paths return a value
+  10 of 215 functions ( 4.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    15 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Dummy.vcxproj -> C:\Users\Fabian\Documents\GitHub\dxd9-internal\Release\dxd9 internal.dll
