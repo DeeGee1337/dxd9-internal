@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Menu">
+      <UniqueIdentifier>{f7c8c7d2-4db3-4671-b898-b95dbebe9e24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Files">
+      <UniqueIdentifier>{f8a1694a-10a8-4821-9817-8a4bd3b1a845}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -35,6 +41,36 @@
     </ClCompile>
     <ClCompile Include="localplayer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_files\imgui.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_files\imgui_demo.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_files\imgui_draw.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_files\imgui_impl_dx9.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_files\imgui_impl_win32.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_files\imgui_stdlib.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_files\imgui_tables.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_files\imgui_widgets.cpp">
+      <Filter>Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +106,39 @@
     </ClInclude>
     <ClInclude Include="classID.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_files\imconfig.h">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_files\imgui.h">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_files\imgui_impl_dx9.h">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_files\imgui_impl_win32.h">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_files\imgui_internal.h">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_files\imgui_stdlib.h">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_files\imstb_rectpack.h">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_files\imstb_textedit.h">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_files\imstb_truetype.h">
+      <Filter>Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

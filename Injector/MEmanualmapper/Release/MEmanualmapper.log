@@ -1,8 +1,1 @@
-﻿  memanualmapper.cpp
-C:\Users\Fabian\Documents\GitHub\dxd9-internal\Injector\MEmanualmapper\memanualmapper.cpp(30,19): warning C4129: 'F': unrecognized character escape sequence
-  Generating code
-  1 of 180 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  MEmanualmapper.vcxproj -> C:\Users\Fabian\Documents\GitHub\dxd9-internal\Injector\Release\MEmanualmapper.exe
+﻿  MEmanualmapper.vcxproj -> C:\Users\Fabian\Documents\GitHub\dxd9-internal\Injector\Release\MEmanualmapper.exe

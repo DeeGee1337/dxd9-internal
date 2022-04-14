@@ -140,7 +140,17 @@
     <ClCompile Include="dx.cpp" />
     <ClCompile Include="hack.cpp" />
     <ClCompile Include="hook.cpp" />
+    <ClCompile Include="imgui_files\imgui.cpp" />
+    <ClCompile Include="imgui_files\imgui_demo.cpp" />
+    <ClCompile Include="imgui_files\imgui_draw.cpp" />
+    <ClCompile Include="imgui_files\imgui_impl_dx9.cpp" />
+    <ClCompile Include="imgui_files\imgui_impl_win32.cpp" />
+    <ClCompile Include="imgui_files\imgui_stdlib.cpp" />
+    <ClCompile Include="imgui_files\imgui_tables.cpp" />
+    <ClCompile Include="imgui_files\imgui_widgets.cpp" />
     <ClCompile Include="localplayer.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="pch.cpp" />
     <ClCompile Include="player.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,9 +161,20 @@
     <ClInclude Include="dx.h" />
     <ClInclude Include="hack.h" />
     <ClInclude Include="hook.h" />
+    <ClInclude Include="imgui_files\imconfig.h" />
+    <ClInclude Include="imgui_files\imgui.h" />
+    <ClInclude Include="imgui_files\imgui_impl_dx9.h" />
+    <ClInclude Include="imgui_files\imgui_impl_win32.h" />
+    <ClInclude Include="imgui_files\imgui_internal.h" />
+    <ClInclude Include="imgui_files\imgui_stdlib.h" />
+    <ClInclude Include="imgui_files\imstb_rectpack.h" />
+    <ClInclude Include="imgui_files\imstb_textedit.h" />
+    <ClInclude Include="imgui_files\imstb_truetype.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="localplayer.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="offsets.h" />
+    <ClInclude Include="pch.h" />
     <ClInclude Include="player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -599,7 +599,6 @@ DWORD WINAPI HackThread(HMODULE hModule)
 	std::cout << "-- DeeGee dxd9 injected! --" << std::endl;
 	std::cout << "[DEBUG] Console Allocated" << std::endl;
 
-
 	// hook
 	if (GetD3D9Device(d3d9Device, sizeof(d3d9Device))) 
 	{
@@ -610,6 +609,7 @@ DWORD WINAPI HackThread(HMODULE hModule)
 	hack = new Hack();
 	hack->Init();
 	Vec3 oPunch{ 0,0,0 };
+
 
 	// hack loop
 	while (!GetAsyncKeyState(VK_END))
@@ -882,9 +882,27 @@ DWORD WINAPI HackThread(HMODULE hModule)
 	FreeLibraryAndExitThread(hModule, 0);
 }
 
+DWORD WINAPI HackThread2(HMODULE hModule)
+{
+	//Endscene hook needs to be removed in order to work with this gui
+	//remove hook
+	//remove all drawings
+	//remove unhook
+	
+	std::cout << "[MENU] Starting Overlay + Gui" << std::endl;
+	g_Menu.InitilizeWindow(hModule, OVERLAY_WINDOW_CLASS_NAME, OVERLAY_WINDOW_NAME);
+	Menu::HandleMessages();
+	std::cout << "[MENU] Done" << std::endl;
+}
+
+
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpr) 
 {
 	if (reason == DLL_PROCESS_ATTACH)
+	{
 		CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)HackThread, hModule, 0, 0));
+		//CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)HackThread2, hModule, 0, 0));
+	}
+
 	return TRUE;
 }

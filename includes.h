@@ -25,5 +25,10 @@
 #include "csgotrace.h"
 #include "csgoVector.h"
 #include "classID.h"
+#include "pch.h"
+#include "Menu.h"
+
+static constexpr const char* OVERLAY_WINDOW_CLASS_NAME = "MyImGuiOverlayClass";
+static constexpr const char* OVERLAY_WINDOW_NAME = "MyImGuiOverlay";
 
 extern Hack* hack;
