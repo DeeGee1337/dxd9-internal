@@ -1,3 +1,4 @@
 # dxd9-internal
- csgo internal trampoline, endscene
-Manualmapping with legit module
+Outdated and old internal hack for csgo with trampoline, endscene
+Manualmapping in a legit module
+ -> without special vac protection and a very obv. thread but it was undetected at that time lol

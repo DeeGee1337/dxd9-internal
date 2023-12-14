@@ -326,7 +326,7 @@ void APIENTRY hkEndScene(LPDIRECT3DDEVICE9 o_pDevice) {
 	}
 
 	//Watermark
-	draw_text("-- DeeGee Negerhook --", windowWidth / 2, windowHeight - 20, D3DCOLOR_ARGB(255, 255, 255, 255));
+	draw_text("-- DeeGee hook --", windowWidth / 2, windowHeight - 20, D3DCOLOR_ARGB(255, 255, 255, 255));
 
 	for (int i = 1; i < 32; i++) 
 	{
